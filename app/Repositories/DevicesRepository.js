@@ -1,5 +1,9 @@
 const Devices = require('../../Models/Devices');
 
-class DevicesRepository {}
+class DevicesRepository {
+  static async getDevices() {
+    return await Devices.query();
+  }
+}
 
 module.exports = DevicesRepository;

@@ -1,5 +1,9 @@
-const AddressTypes = require('../../Models/AddressTypes');
+const AddressTypes = require('../Models/AddressTypes');
 
-class AddressTypesRepository {}
+class AddressTypesRepository {
+  static async getAddressTypes() {
+    return await AddressTypes.query();
+  }
+}
 
 module.exports = AddressTypesRepository;

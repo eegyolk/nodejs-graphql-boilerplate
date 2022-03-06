@@ -1,5 +1,9 @@
 const UserPersonas = require('../../Models/UserPersonas');
 
-class UserPersonasRepository {}
+class UserPersonasRepository {
+  static async getUserPersonas() {
+    return await UserPersonas.query();
+  }
+}
 
 module.exports = UserPersonasRepository;
