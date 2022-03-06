@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors');
 const { Model } = require('objection');
 const { v4: uuidv4 } = require('uuid');
 
@@ -27,6 +28,9 @@ module.exports.extendApp = function ({ app }) {
   Model.knex(new Database(this.config.database).connect());
 
   app.locals.config = this.config;
+
+  // Middleware to setup cors
+  app.use(cors());
 
   // Midddleware to setup logger
   app.use(function (req, res, next) {
