@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 const cors = require('cors');
+const { graphqlHTTP } = require('express-graphql');
+const { GraphQLSchema } = require('graphql');
 const { Model } = require('objection');
 const { v4: uuidv4 } = require('uuid');
 
@@ -13,8 +15,9 @@ const appConfig = require('../config/app'),
   redisConfig = require('../config/redis'),
   telegramConfig = require('../config/telegram');
 
-const graphqlRoutes = require('../routes/graphql'),
-  webRoutes = require('../routes/web');
+const allQuery = require('../app/GraphQL/allQuery');
+
+const webRoutes = require('../routes/web');
 
 module.exports.config = {
   app: appConfig,
@@ -30,6 +33,7 @@ module.exports.extendApp = function ({ app }) {
   app.locals.config = this.config;
 
   // Middleware to setup cors
+  // TODO: Add configurations
   app.use(cors());
 
   // Midddleware to setup logger
@@ -53,6 +57,18 @@ module.exports.extendApp = function ({ app }) {
     next();
   });
 
-  app.use('/graphql', graphqlRoutes);
+  // Middleware to setup graphql
+  const schema = new GraphQLSchema({
+    query: allQuery,
+    // TODO:: mutation: Mutation,
+  });
+  app.use(
+    graphqlHTTP({
+      schema,
+      graphiql: true,
+    })
+  );
+
+  // Middleware to setup routes
   app.use(webRoutes);
 };
