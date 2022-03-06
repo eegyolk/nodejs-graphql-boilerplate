@@ -14,5 +14,11 @@ exports.seed = async function (knex) {
       username: faker.internet.userName(),
       password: faker.internet.password(),
     },
+    {
+      name: faker.name.findName(),
+      email_address: faker.internet.email(),
+      username: faker.internet.userName(),
+      password: faker.internet.password(),
+    },
   ]);
 };
