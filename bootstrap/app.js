@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const { Model } = require('objection');
 const { v4: uuidv4 } = require('uuid');
 
 const Database = require('../app/Classes/Database');
@@ -23,9 +24,8 @@ module.exports.config = {
 };
 
 module.exports.extendApp = function ({ app }) {
-  app.locals.databaseConnections = new Database(
-    this.config.database
-  ).createConnections();
+  Model.knex(new Database(this.config.database).connect());
+
   app.locals.config = this.config;
 
   // Midddleware to setup logger

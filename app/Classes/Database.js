@@ -5,21 +5,15 @@ class Database {
     this.config = config;
   }
 
-  createConnections() {
-    const { uses, connections } = this.config;
-    const usedConnections = {};
+  connect() {
+    const { use, connections } = this.config;
+    const config = connections[use];
 
-    uses.forEach(async (connectionName) => {
-      const config = connections[connectionName.trim()];
-
-      if (config.driver === DatabaseConstant.DRIVER.MYSQL) {
-        usedConnections[connectionName.trim()] = mysql.call(this, config);
-      } else if (config.driver === DatabaseConstant.DRIVER.PG) {
-        usedConnections[connectionName.trim()] = pg.call(this, config);
-      }
-    });
-
-    return usedConnections;
+    if (config.driver === DatabaseConstant.DRIVER.MYSQL) {
+      return mysql.call(this, config);
+    } else if (config.driver === DatabaseConstant.DRIVER.PG) {
+      return pg.call(this, config);
+    }
   }
 }
 

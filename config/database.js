@@ -1,8 +1,8 @@
 const EventEmitter = require('events');
 
 module.exports = {
-  /** Use Database Connections Name */
-  uses: process.env.DB_CONNECTIONS.split(',') || 'mysql'.split(','),
+  /** Use Database Connection Name */
+  use: process.env.DB_CONNECTION || 'mysql',
 
   /** Database Connections */
   connections: {
