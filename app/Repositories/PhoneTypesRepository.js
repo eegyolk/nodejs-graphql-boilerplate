@@ -1,4 +1,4 @@
-const PhoneTypes = require('../../Models/PhoneTypes');
+const PhoneTypes = require('../Models/PhoneTypes');
 
 class PhoneTypesRepository {
   static async getPhoneTypes() {

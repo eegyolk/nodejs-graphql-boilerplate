@@ -1,4 +1,4 @@
-const Devices = require('../../Models/Devices');
+const Devices = require('../Models/Devices');
 
 class DevicesRepository {
   static async getDevices() {

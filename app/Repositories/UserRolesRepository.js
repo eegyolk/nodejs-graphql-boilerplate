@@ -1,4 +1,4 @@
-const UserRoles = require('../../Models/UserRoles');
+const UserRoles = require('../Models/UserRoles');
 
 class UserRolesRepository {
   static async getUserRoles() {

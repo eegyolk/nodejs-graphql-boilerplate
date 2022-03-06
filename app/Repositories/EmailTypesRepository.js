@@ -1,4 +1,4 @@
-const EmailTypes = require('../../Models/EmailTypes');
+const EmailTypes = require('../Models/EmailTypes');
 
 class EmailTypesRepository {
   static async getEmailTypes() {

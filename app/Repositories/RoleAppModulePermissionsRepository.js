@@ -1,4 +1,4 @@
-const RoleAppModulePermissions = require('../../Models/RoleAppModulePermissions');
+const RoleAppModulePermissions = require('../Models/RoleAppModulePermissions');
 
 class RoleAppModulePermissionsRepository {
   static async getRoleAppModulePermissions() {

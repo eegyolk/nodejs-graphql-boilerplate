@@ -1,4 +1,4 @@
-const AppModules = require('../../Models/AppModules');
+const AppModules = require('../Models/AppModules');
 
 class AppModulesRepository {
   static async getAppModules() {

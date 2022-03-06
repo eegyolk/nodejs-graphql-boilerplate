@@ -1,4 +1,4 @@
-const UserEmails = require('../../Models/UserEmails');
+const UserEmails = require('../Models/UserEmails');
 
 class UserEmailsRepository {
   static async getUserEmails() {

@@ -1,4 +1,4 @@
-const Personas = require('../../Models/Personas');
+const Personas = require('../Models/Personas');
 
 class PersonasRepository {
   static async getPersonas() {

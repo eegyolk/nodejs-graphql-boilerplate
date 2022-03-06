@@ -1,4 +1,4 @@
-const SocialNetworks = require('../../Models/SocialNetworks');
+const SocialNetworks = require('../Models/SocialNetworks');
 
 class SocialNetworksRepository {
   static async getSocialNetworks() {
