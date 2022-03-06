@@ -21,6 +21,7 @@ module.exports = {
     },
     seeds: {
       directory: '../database/seeds',
+      timestampFilenamePrefix: true,
     },
   },
   production: {
@@ -43,6 +44,7 @@ module.exports = {
     },
     seeds: {
       directory: '../database/seeds',
+      timestampFilenamePrefix: true,
     },
   },
 };
