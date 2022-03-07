@@ -14,12 +14,13 @@ class DevicesRepository {
   }
 
   static async createDevice(input) {
-    const { user_id, ip_address, user_agent } = input;
+    const { user_id, ip_address, user_agent, user_agent_md5 } = input;
 
     return await Devices.query().insert({
       user_id,
       ip_address,
       user_agent,
+      user_agent_md5,
     });
   }
 }

@@ -1,3 +1,5 @@
+const crypto = require('crypto-js');
+
 const DevicesRepository = require('../../Repositories/DevicesRepository');
 
 const devicesResolver = async () => {
@@ -9,7 +11,11 @@ const getDeviceResolver = async (id) => {
 };
 
 const createDeviceResolver = async (args) => {
-  return await DevicesRepository.createDevice(args.input);
+  const { input } = args;
+
+  input['user_agent_md5'] = crypto.MD5(input.user_agent).toString();
+
+  return await DevicesRepository.createDevice(input);
 };
 
 module.exports = {
