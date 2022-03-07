@@ -1,3 +1,5 @@
+const { GraphQLError } = require('graphql');
+
 const EmailTypesRepository = require('../../Repositories/EmailTypesRepository');
 
 const getEmailTypesResolvers = async () => {

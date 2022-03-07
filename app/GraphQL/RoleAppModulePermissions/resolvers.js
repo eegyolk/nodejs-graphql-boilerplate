@@ -1,3 +1,5 @@
+const { GraphQLError } = require('graphql');
+
 const RoleAppModulePermissionsRepository = require('../../Repositories/RoleAppModulePermissionsRepository');
 
 const getRoleAppModulePermissionsResolver = async () => {

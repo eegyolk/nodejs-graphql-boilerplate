@@ -1,3 +1,5 @@
+const { GraphQLError } = require('graphql');
+
 const UsersRepository = require('../../Repositories/UsersRepository');
 
 const getUsersResolver = async () => {
