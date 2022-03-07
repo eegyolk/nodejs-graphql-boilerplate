@@ -22,16 +22,6 @@ const getEmailTypeResolvers = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
-const getEmailTypesResolvers = async (ids) => {
-  const result = await EmailTypesRepository.getEmailTypes(ids);
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
-};
-
 const createEmailTypeResolver = async (args) => {
   return await EmailTypesRepository.createEmailType(args.input);
 };
@@ -39,6 +29,5 @@ const createEmailTypeResolver = async (args) => {
 module.exports = {
   emailTypesResolvers,
   getEmailTypeResolvers,
-  getEmailTypesResolvers,
   createEmailTypeResolver,
 };
