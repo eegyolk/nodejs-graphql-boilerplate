@@ -6,7 +6,7 @@ class UsersRepository {
   }
 
   static async getUser(id) {
-    return await Users.query().whereIn('id', id);
+    return await Users.query().findById(id);
   }
 
   static async createUser(input) {

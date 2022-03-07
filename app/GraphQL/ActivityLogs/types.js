@@ -5,11 +5,8 @@ const {
   GraphQLInt,
 } = require('graphql');
 
-const { devicesType } = require('../Devices/types'),
-  { getDeviceResolver } = require('../Devices/resolvers');
-
-const { usersType } = require('../Users/types'),
-  { getUserResolver } = require('../Users/resolvers');
+const { devicesType } = require('../Devices/types');
+const { usersType } = require('../Users/types');
 
 const activityLogsType = new GraphQLObjectType({
   name: 'ActivityLogs',

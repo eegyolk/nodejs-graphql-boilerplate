@@ -6,7 +6,7 @@ class DevicesRepository {
   }
 
   static async getDevice(id) {
-    return await Devices.query().whereIn('id', id);
+    return await Devices.query().findById(id);
   }
 
   static async createDevice(input) {
