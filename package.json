@@ -27,6 +27,7 @@
   "dependencies": {
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
@@ -42,8 +43,8 @@
     "winston-daily-rotate-file": "^4.6.1"
   },
   "devDependencies": {
-    "babel-loader": "^8.2.3",
     "@faker-js/faker": "^6.0.0-alpha.7",
+    "babel-loader": "^8.2.3",
     "jest": "^27.5.1",
     "jest-html-reporter": "^3.4.2",
     "lorem-ipsum": "^2.0.4",
