@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLObjectType } = require('graphql');
 
 const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
@@ -18,6 +18,7 @@ const mutations = new GraphQLObjectType({
       },
       resolve: async (source, args) => await createPersonaResolver(args),
     },
+
     createSocialNetwork: {
       type: socialNetworksType,
       args: {
