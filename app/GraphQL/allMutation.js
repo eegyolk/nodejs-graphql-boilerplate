@@ -66,6 +66,10 @@ const { createUserRoleInputType } = require('./UserRoles/inputTypes'),
   { createUserRoleResolver } = require('./UserRoles/resolvers'),
   { userRolesType } = require('./UserRoles/types');
 
+const { createUserInputType } = require('./Users/inputTypes'),
+  { createUserResolver } = require('./Users/resolvers'),
+  { usersType } = require('./Users/types');
+
 const mutations = new GraphQLObjectType({
   name: 'Mutations',
   fields: {
@@ -188,6 +192,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createUserRoleInputType },
       },
       resolve: async (source, args) => await createUserRoleResolver(args),
+    },
+
+    createUser: {
+      type: usersType,
+      args: {
+        input: { type: createUserInputType },
+      },
+      resolve: async (source, args) => await createUserResolver(args),
     },
   },
 });
