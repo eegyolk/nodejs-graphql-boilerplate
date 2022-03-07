@@ -60,8 +60,8 @@ const { socialNetworksType } = require('./SocialNetworks/types'),
 
 const { userAddressesType } = require('./UserAddresses/types'),
   {
-    getUserAddressesResolvers,
-    getUserAddressResolvers,
+    getUserAddressesResolver,
+    getUserAddressResolver,
   } = require('./UserAddresses/resolvers');
 
 const { userEmailsType } = require('./UserEmails/types'),
@@ -223,14 +223,14 @@ const queries = new GraphQLObjectType({
 
     userAddresses: {
       type: new GraphQLList(userAddressesType),
-      resolve: async () => await getUserAddressesResolvers(),
+      resolve: async () => await getUserAddressesResolver(),
     },
     getUserAddress: {
       type: userAddressesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserAddressResolvers(args.id),
+      resolve: async (source, args) => await getUserAddressResolver(args.id),
     },
 
     userEmails: {
