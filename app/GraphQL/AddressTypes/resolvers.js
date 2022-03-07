@@ -22,7 +22,12 @@ const getAddressTypeResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createAddressTypeResolver = async (args) => {
+  return await AddressTypesRepository.createAddressType(args.input);
+};
+
 module.exports = {
   getAddressTypesResolver,
   getAddressTypeResolver,
+  createAddressTypeResolver,
 };

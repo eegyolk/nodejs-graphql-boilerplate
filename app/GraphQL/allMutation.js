@@ -4,6 +4,10 @@ const { createActivityLogInputType } = require('./ActivityLogs/inputTypes'),
   { createActivityLogResolver } = require('./ActivityLogs/resolvers'),
   { activityLogsType } = require('./ActivityLogs/types');
 
+const { createAddressTypeInputType } = require('./AddressTypes/inputTypes'),
+  { createAddressTypeResolver } = require('./AddressTypes/resolvers'),
+  { addressTypesType } = require('./AddressTypes/types');
+
 const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
   { personasType } = require('./Personas/types');
@@ -21,6 +25,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createActivityLogInputType },
       },
       resolve: async (source, args) => await createActivityLogResolver(args),
+    },
+
+    createAddressType: {
+      type: addressTypesType,
+      args: {
+        input: { type: createAddressTypeInputType },
+      },
+      resolve: async (source, args) => await createAddressTypeResolver(args),
     },
 
     createPersona: {
