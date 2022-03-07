@@ -22,7 +22,12 @@ const getUserPhoneResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createUserPhoneResolver = async (args) => {
+  return await UserPhonesRepository.createUserPhone(args.input);
+};
+
 module.exports = {
   getUserPhonesResolver,
   getUserPhoneResolver,
+  createUserPhoneResolver,
 };

@@ -58,6 +58,10 @@ const { createUserPersonaInputType } = require('./UserPersonas/inputTypes'),
   { createUserPersonaResolver } = require('./UserPersonas/resolvers'),
   { userPersonasType } = require('./UserPersonas/types');
 
+const { createUserPhoneInputType } = require('./UserPhones/inputTypes'),
+  { createUserPhoneResolver } = require('./UserPhones/resolvers'),
+  { userPhonesType } = require('./UserPhones/types');
+
 const mutations = new GraphQLObjectType({
   name: 'Mutations',
   fields: {
@@ -164,6 +168,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createUserPersonaInputType },
       },
       resolve: async (source, args) => await createUserPersonaResolver(args),
+    },
+
+    createUserPhone: {
+      type: userPhonesType,
+      args: {
+        input: { type: createUserPhoneInputType },
+      },
+      resolve: async (source, args) => await createUserPhoneResolver(args),
     },
   },
 });
