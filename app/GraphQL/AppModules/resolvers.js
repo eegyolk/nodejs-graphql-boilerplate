@@ -22,6 +22,16 @@ const getAppModuleResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const getAppModulesResolver = async (ids) => {
+  const result = await AppModulesRepository.getAppModules(ids);
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${id}`, {});
+};
+
 const createAppModuleResolver = async (args) => {
   return await AppModulesRepository.createAppModule(args.input);
 };
@@ -29,5 +39,6 @@ const createAppModuleResolver = async (args) => {
 module.exports = {
   appModulesResolver,
   getAppModuleResolver,
+  getAppModulesResolver,
   createAppModuleResolver,
 };

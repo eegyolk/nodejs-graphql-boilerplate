@@ -9,6 +9,10 @@ class RolesRepository {
     return await Roles.query().findById(id);
   }
 
+  static async getRoles(ids) {
+    return await Roles.query().whereIn('id', ids);
+  }
+
   static async createRole(input) {
     const { code, label, description, is_active } = input;
 

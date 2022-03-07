@@ -9,6 +9,10 @@ class AppModulesRepository {
     return await AppModules.query().findById(id);
   }
 
+  static async getAppModules(ids) {
+    return await AppModules.query().whereIn('id', ids);
+  }
+
   static async createAppModule(input) {
     const { code, label, description, is_default } = input;
 
