@@ -1,5 +1,9 @@
 const { GraphQLObjectType } = require('graphql');
 
+const { createActivityLogInputType } = require('./ActivityLogs/inputTypes'),
+  { createActivityLogResolver } = require('./ActivityLogs/resolvers'),
+  { activityLogsType } = require('./ActivityLogs/types');
+
 const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
   { personasType } = require('./Personas/types');
@@ -11,6 +15,14 @@ const { createSocialNetworkInputType } = require('./SocialNetworks/inputTypes'),
 const mutations = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+    createActivityLog: {
+      type: activityLogsType,
+      args: {
+        input: { type: createActivityLogInputType },
+      },
+      resolve: async (source, args) => await createActivityLogResolver(args),
+    },
+
     createPersona: {
       type: personasType,
       args: {

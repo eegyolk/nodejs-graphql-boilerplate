@@ -22,7 +22,12 @@ const getActivityLogResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createActivityLogResolver = async (args) => {
+  return await ActivityLogsRepository.createActivityLog(args.input);
+};
+
 module.exports = {
   getActivityLogsResolver,
   getActivityLogResolver,
+  createActivityLogResolver,
 };
