@@ -1,11 +1,23 @@
 const UserAddressesRepository = require('../../Repositories/UserAddressesRepository');
 
 const getUserAddressesResolvers = async () => {
-  return await UserAddressesRepository.getUserAddresses();
+  const result = await UserAddressesRepository.getUserAddresses();
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError('No data found', {});
 };
 
 const getUserAddressResolvers = async (id) => {
-  return await UserAddressesRepository.getUserAddress(id);
+  const result = await UserAddressesRepository.getUserAddress(id);
+
+  if (result) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${id}`, {});
 };
 
 module.exports = {

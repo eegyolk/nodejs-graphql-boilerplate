@@ -1,11 +1,23 @@
 const DevicesRepository = require('../../Repositories/DevicesRepository');
 
 const getDevicesResolver = async () => {
-  return await DevicesRepository.getDevices();
+  const result = await DevicesRepository.getDevices();
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError('No data found', {});
 };
 
 const getDeviceResolver = async (id) => {
-  return await DevicesRepository.getDevice(id);
+  const result = await DevicesRepository.getDevice(id);
+
+  if (result) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${id}`, {});
 };
 
 module.exports = {
