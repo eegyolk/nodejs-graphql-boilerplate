@@ -15,7 +15,8 @@ const appConfig = require('../config/app'),
   redisConfig = require('../config/redis'),
   telegramConfig = require('../config/telegram');
 
-const allQuery = require('../app/GraphQL/allQuery');
+const allMutation = require('../app/GraphQL/allMutation'),
+  allQuery = require('../app/GraphQL/allQuery');
 
 const webRoutes = require('../routes/web');
 
@@ -60,7 +61,7 @@ module.exports.extendApp = function ({ app }) {
   // Middleware to setup graphql
   const schema = new GraphQLSchema({
     query: allQuery,
-    // TODO:: mutation: Mutation,
+    mutation: allMutation,
   });
   app.use(
     graphqlHTTP({
