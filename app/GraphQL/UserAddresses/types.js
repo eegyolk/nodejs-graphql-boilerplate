@@ -23,7 +23,7 @@ const userAddressesType = new GraphQLObjectType({
     address_type: {
       type: new GraphQLNonNull(addressTypesType),
       resolve: (source, args, { loaders }) =>
-        loaders.addressTypes.load(source.user_id),
+        loaders.addressTypes.load(source.address_type_id),
     },
     address_line_1: { type: new GraphQLNonNull(GraphQLString) },
     address_line_2: { type: new GraphQLNonNull(GraphQLString) },

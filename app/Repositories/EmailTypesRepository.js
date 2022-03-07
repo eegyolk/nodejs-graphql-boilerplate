@@ -9,6 +9,10 @@ class EmailTypesRepository {
     return await EmailTypes.query().findById(id);
   }
 
+  static async getEmailTypes(ids) {
+    return await EmailTypes.query().whereIn('id', ids);
+  }
+
   static async createEmailType(input) {
     const { code, label, description, is_default } = input;
 

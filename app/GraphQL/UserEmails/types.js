@@ -6,12 +6,25 @@ const {
   GraphQLBoolean,
 } = require('graphql');
 
+const { emailTypesType } = require('../EmailTypes/types');
+const { usersType } = require('../Users/types');
+
 const userEmailsType = new GraphQLObjectType({
   name: 'UserEmails',
   fields: {
     id: { type: new GraphQLNonNull(GraphQLInt) },
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
+    user: {
+      type: new GraphQLNonNull(usersType),
+      resolve: (source, args, { loaders }) =>
+        loaders.users.load(source.user_id),
+    },
     email_type_id: { type: new GraphQLNonNull(GraphQLInt) },
+    email_type: {
+      type: new GraphQLNonNull(emailTypesType),
+      resolve: (source, args, { loaders }) =>
+        loaders.emailTypes.load(source.email_type_id),
+    },
     email_address: { type: new GraphQLNonNull(GraphQLString) },
     is_default: { type: new GraphQLNonNull(GraphQLBoolean) },
     rank: { type: new GraphQLNonNull(GraphQLInt) },
