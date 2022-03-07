@@ -24,7 +24,14 @@ const getRoleAppModulePermissionResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createRoleAppModulePermissionResolver = async (args) => {
+  return await RoleAppModulePermissionsRepository.createRoleAppModulePermission(
+    args.input
+  );
+};
+
 module.exports = {
   getRoleAppModulePermissionsResolver,
   getRoleAppModulePermissionResolver,
+  createRoleAppModulePermissionResolver,
 };
