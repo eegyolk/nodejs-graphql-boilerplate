@@ -15,7 +15,8 @@ const appConfig = require('../config/app'),
   redisConfig = require('../config/redis'),
   telegramConfig = require('../config/telegram');
 
-const allMutation = require('../app/GraphQL/allMutation'),
+const allLoader = require('../app/GraphQL/allLoader'),
+  allMutation = require('../app/GraphQL/allMutation'),
   allQuery = require('../app/GraphQL/allQuery');
 
 const webRoutes = require('../routes/web');
@@ -66,6 +67,9 @@ module.exports.extendApp = function ({ app }) {
   app.use(
     graphqlHTTP({
       schema,
+      context: {
+        loaders: allLoader,
+      },
       graphiql: true,
     })
   );
