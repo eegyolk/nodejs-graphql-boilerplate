@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const SocialNetworksRepository = require('../../Repositories/SocialNetworksRepository');
 
 const socialNetworksResolver = async () => {
-  const result = await SocialNetworksRepository.socialNetworks();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await SocialNetworksRepository.socialNetworks();
 };
 
 const getSocialNetworkResolver = async (id) => {
-  const result = await SocialNetworksRepository.getSocialNetwork(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await SocialNetworksRepository.getSocialNetwork(id);
 };
 
 const createSocialNetworkResolver = async (args) => {

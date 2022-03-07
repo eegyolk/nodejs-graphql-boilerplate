@@ -28,8 +28,8 @@ const { devicesType } = require('./Devices/types'),
 
 const { emailTypesType } = require('./EmailTypes/types'),
   {
-    emailTypesResolvers,
-    getEmailTypeResolvers,
+    emailTypesResolver,
+    getEmailTypeResolver,
   } = require('./EmailTypes/resolvers');
 
 const { personasType } = require('./Personas/types'),
@@ -147,14 +147,14 @@ const queries = new GraphQLObjectType({
 
     emailTypes: {
       type: new GraphQLList(emailTypesType),
-      resolve: async () => await emailTypesResolvers(),
+      resolve: async () => await emailTypesResolver(),
     },
     getEmailType: {
       type: emailTypesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getEmailTypeResolvers(args.id),
+      resolve: async (source, args) => await getEmailTypeResolver(args.id),
     },
 
     personas: {

@@ -1,27 +1,13 @@
-const { GraphQLError } = require('graphql');
-
 const RoleAppModulePermissionsRepository = require('../../Repositories/RoleAppModulePermissionsRepository');
 
 const roleAppModulePermissionsResolver = async () => {
-  const result =
-    await RoleAppModulePermissionsRepository.roleAppModulePermissions();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await RoleAppModulePermissionsRepository.roleAppModulePermissions();
 };
 
 const getRoleAppModulePermissionResolver = async (id) => {
-  const result =
-    await RoleAppModulePermissionsRepository.getRoleAppModulePermission(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await RoleAppModulePermissionsRepository.getRoleAppModulePermission(
+    id
+  );
 };
 
 const createRoleAppModulePermissionResolver = async (args) => {

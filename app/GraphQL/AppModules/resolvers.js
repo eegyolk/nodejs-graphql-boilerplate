@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const AppModulesRepository = require('../../Repositories/AppModulesRepository');
 
 const appModulesResolver = async () => {
-  const result = await AppModulesRepository.appModules();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await AppModulesRepository.appModules();
 };
 
 const getAppModuleResolver = async (id) => {
-  const result = await AppModulesRepository.getAppModule(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await AppModulesRepository.getAppModule(id);
 };
 
 const createAppModuleResolver = async (args) => {

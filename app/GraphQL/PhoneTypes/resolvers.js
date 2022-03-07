@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const PhoneTypesRepository = require('../../Repositories/PhoneTypesRepository');
 
 const phoneTypesResolver = async () => {
-  const result = await PhoneTypesRepository.phoneTypes();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await PhoneTypesRepository.phoneTypes();
 };
 
 const getPhoneTypeResolver = async (id) => {
-  const result = await PhoneTypesRepository.getPhoneType(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await PhoneTypesRepository.getPhoneType(id);
 };
 
 const createPhoneTypeResolver = async (args) => {

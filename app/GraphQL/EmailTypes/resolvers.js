@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const EmailTypesRepository = require('../../Repositories/EmailTypesRepository');
 
-const emailTypesResolvers = async () => {
-  const result = await EmailTypesRepository.emailTypes();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+const emailTypesResolver = async () => {
+  return await EmailTypesRepository.emailTypes();
 };
 
-const getEmailTypeResolvers = async (id) => {
-  const result = await EmailTypesRepository.getEmailType(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+const getEmailTypeResolver = async (id) => {
+  return await EmailTypesRepository.getEmailType(id);
 };
 
 const createEmailTypeResolver = async (args) => {
@@ -27,7 +13,7 @@ const createEmailTypeResolver = async (args) => {
 };
 
 module.exports = {
-  emailTypesResolvers,
-  getEmailTypeResolvers,
+  emailTypesResolver,
+  getEmailTypeResolver,
   createEmailTypeResolver,
 };

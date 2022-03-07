@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const RolesRepository = require('../../Repositories/RolesRepository');
 
 const rolesResolver = async () => {
-  const result = await RolesRepository.roles();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await RolesRepository.roles();
 };
 
 const getRoleResolver = async (id) => {
-  const result = await RolesRepository.getRole(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await RolesRepository.getRole(id);
 };
 
 const createRoleResolver = async (args) => {

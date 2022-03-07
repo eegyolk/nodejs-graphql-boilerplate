@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const DevicesRepository = require('../../Repositories/DevicesRepository');
 
 const devicesResolver = async () => {
-  const result = await DevicesRepository.devices();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await DevicesRepository.devices();
 };
 
 const getDeviceResolver = async (id) => {
-  const result = await DevicesRepository.getDevice(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await DevicesRepository.getDevice(id);
 };
 
 const createDeviceResolver = async (args) => {

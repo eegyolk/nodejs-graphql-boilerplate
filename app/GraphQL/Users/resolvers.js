@@ -1,25 +1,11 @@
-const { GraphQLError } = require('graphql');
-
 const UsersRepository = require('../../Repositories/UsersRepository');
 
 const usersResolver = async () => {
-  const result = await UsersRepository.users();
-
-  if (result.length > 0) {
-    return result;
-  }
-
-  return new GraphQLError('No data found', {});
+  return await UsersRepository.users();
 };
 
 const getUserResolver = async (id) => {
-  const result = await UsersRepository.getUser(id);
-
-  if (result) {
-    return result;
-  }
-
-  return new GraphQLError(`No data found for id ${id}`, {});
+  return await UsersRepository.getUser(id);
 };
 
 const createUserResolver = async (args) => {
