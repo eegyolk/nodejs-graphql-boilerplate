@@ -22,7 +22,12 @@ const getRoleResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createRoleResolver = async (args) => {
+  return await RolesRepository.createRole(args.input);
+};
+
 module.exports = {
   getRolesResolver,
   getRoleResolver,
+  createRoleResolver,
 };

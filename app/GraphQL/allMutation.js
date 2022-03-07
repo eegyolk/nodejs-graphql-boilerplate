@@ -38,6 +38,10 @@ const {
     roleAppModulePermissionsType,
   } = require('./RoleAppModulePermissions/types');
 
+const { createRoleInputType } = require('./Roles/inputTypes'),
+  { createRoleResolver } = require('./Roles/resolvers'),
+  { rolesType } = require('./Roles/types');
+
 const { createSocialNetworkInputType } = require('./SocialNetworks/inputTypes'),
   { createSocialNetworkResolver } = require('./SocialNetworks/resolvers'),
   { socialNetworksType } = require('./SocialNetworks/types');
@@ -108,6 +112,14 @@ const mutations = new GraphQLObjectType({
       },
       resolve: async (source, args) =>
         await createRoleAppModulePermissionResolver(args),
+    },
+
+    createRole: {
+      type: rolesType,
+      args: {
+        input: { type: createRoleInputType },
+      },
+      resolve: async (source, args) => await createRoleResolver(args),
     },
 
     createSocialNetwork: {
