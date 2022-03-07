@@ -1,4 +1,9 @@
-const { GraphQLObjectType, GraphQLList, GraphQLInt } = require('graphql');
+const {
+  GraphQLObjectType,
+  GraphQLList,
+  GraphQLInt,
+  GraphQLString,
+} = require('graphql');
 
 const { activityLogsType } = require('./ActivityLogs/types'),
   {
@@ -102,7 +107,7 @@ const queries = new GraphQLObjectType({
     getActivityLog: {
       type: activityLogsType,
       args: {
-        id: { type: GraphQLInt },
+        id: { type: GraphQLString },
       },
       resolve: async (source, args) => await getActivityLogResolver(args.id),
     },
