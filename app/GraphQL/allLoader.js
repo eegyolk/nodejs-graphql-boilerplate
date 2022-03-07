@@ -7,6 +7,7 @@ const { getEmailTypesResolvers } = require('./EmailTypes/resolvers');
 const { getPersonasResolver } = require('./Personas/resolvers');
 const { getPhoneTypesResolver } = require('./PhoneTypes/resolvers');
 const { getRolesResolver } = require('./Roles/resolvers');
+const { getSocialNetworksResolver } = require('./SocialNetworks/resolvers');
 const { getUsersResolver } = require('./Users/resolvers');
 
 const loaders = {
@@ -17,6 +18,7 @@ const loaders = {
   personas: new DataLoader((ids) => getPersonasResolver(ids)),
   phoneTypes: new DataLoader((ids) => getPhoneTypesResolver(ids)),
   roles: new DataLoader((ids) => getRolesResolver(ids)),
+  socialNetworks: new DataLoader((ids) => getSocialNetworksResolver(ids)),
   users: new DataLoader((ids) => getUsersResolver(ids)),
 };
 

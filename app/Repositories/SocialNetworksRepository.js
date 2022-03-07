@@ -9,6 +9,10 @@ class SocialNetworksRepository {
     return await SocialNetworks.query().findById(id);
   }
 
+  static async getSocialNetworks(ids) {
+    return await SocialNetworks.query().whereIn('id', ids);
+  }
+
   static async createSocialNetwork(input) {
     const { code, label, description, is_default, logo_url } = input;
 
