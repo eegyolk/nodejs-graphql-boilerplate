@@ -22,7 +22,12 @@ const getEmailTypeResolvers = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createEmailTypeResolver = async (args) => {
+  return await EmailTypesRepository.createEmailType(args.input);
+};
+
 module.exports = {
   getEmailTypesResolvers,
   getEmailTypeResolvers,
+  createEmailTypeResolver,
 };

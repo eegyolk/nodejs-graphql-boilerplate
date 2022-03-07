@@ -8,6 +8,17 @@ class EmailTypesRepository {
   static async getEmailType(id) {
     return await EmailTypes.query().findById(id);
   }
+
+  static async createEmailType(input) {
+    const { code, label, description, is_default } = input;
+
+    return await Devices.query().insert({
+      code,
+      label,
+      description,
+      is_default,
+    });
+  }
 }
 
 module.exports = EmailTypesRepository;
