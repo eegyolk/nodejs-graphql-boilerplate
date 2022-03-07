@@ -22,7 +22,12 @@ const getAppModuleResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createAppModuleResolver = async (args) => {
+  return await AppModulesRepository.createAppModule(args.input);
+};
+
 module.exports = {
   getAppModulesResolver,
   getAppModuleResolver,
+  createAppModuleResolver,
 };

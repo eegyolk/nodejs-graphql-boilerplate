@@ -8,6 +8,10 @@ const { createAddressTypeInputType } = require('./AddressTypes/inputTypes'),
   { createAddressTypeResolver } = require('./AddressTypes/resolvers'),
   { addressTypesType } = require('./AddressTypes/types');
 
+const { createAppModuleInputType } = require('./AppModules/inputTypes'),
+  { createAppModuleResolver } = require('./AppModules/resolvers'),
+  { appModulesType } = require('./AppModules/types');
+
 const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
   { personasType } = require('./Personas/types');
@@ -33,6 +37,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createAddressTypeInputType },
       },
       resolve: async (source, args) => await createAddressTypeResolver(args),
+    },
+
+    createAppModule: {
+      type: appModulesType,
+      args: {
+        input: { type: createAppModuleInputType },
+      },
+      resolve: async (source, args) => await createAppModuleResolver(args),
     },
 
     createPersona: {
