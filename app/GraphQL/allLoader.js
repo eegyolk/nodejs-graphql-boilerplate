@@ -1,11 +1,11 @@
 const DataLoader = require('dataloader');
 
-const { getDeviceResolver } = require('./Devices/resolvers');
-const { getUserResolver } = require('./Users/resolvers');
+const { getDevicesResolver } = require('./Devices/resolvers');
+const { getUsersResolver } = require('./Users/resolvers');
 
 const loaders = {
-  devices: new DataLoader((ids) => getDeviceResolver(ids)),
-  users: new DataLoader((ids) => getUserResolver(ids)),
+  devices: new DataLoader((ids) => getDevicesResolver(ids)),
+  users: new DataLoader((ids) => getUsersResolver(ids)),
 };
 
 module.exports = loaders;

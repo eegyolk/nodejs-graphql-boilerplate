@@ -9,6 +9,10 @@ class DevicesRepository {
     return await Devices.query().findById(id);
   }
 
+  static async getDevices(ids) {
+    return await Devices.query().whereIn('id', ids);
+  }
+
   static async createDevice(input) {
     const { user_id, ip_address, user_agent } = input;
 

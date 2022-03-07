@@ -22,6 +22,16 @@ const getDeviceResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const getDevicesResolver = async (ids) => {
+  const result = await DevicesRepository.getDevices(ids);
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${ids}`, {});
+};
+
 const createDeviceResolver = async (args) => {
   return await DevicesRepository.createDevice(args.input);
 };
@@ -29,5 +39,6 @@ const createDeviceResolver = async (args) => {
 module.exports = {
   devicesResolver,
   getDeviceResolver,
+  getDevicesResolver,
   createDeviceResolver,
 };

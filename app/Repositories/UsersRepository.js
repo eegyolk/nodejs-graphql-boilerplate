@@ -9,6 +9,10 @@ class UsersRepository {
     return await Users.query().findById(id);
   }
 
+  static async getUsers(ids) {
+    return await Users.query().whereIn('id', ids);
+  }
+
   static async createUser(input) {
     const {
       name,

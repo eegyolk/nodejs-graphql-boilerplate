@@ -22,6 +22,16 @@ const getUserResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const getUsersResolver = async (ids) => {
+  const result = await UsersRepository.getUsers(ids);
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${id}`, {});
+};
+
 const createUserResolver = async (args) => {
   return await UsersRepository.createUser(args.input);
 };
@@ -29,5 +39,6 @@ const createUserResolver = async (args) => {
 module.exports = {
   usersResolver,
   getUserResolver,
+  getUsersResolver,
   createUserResolver,
 };
