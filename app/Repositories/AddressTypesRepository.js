@@ -9,6 +9,10 @@ class AddressTypesRepository {
     return await AddressTypes.query().findById(id);
   }
 
+  static async getAddressTypes(ids) {
+    return await AddressTypes.query().whereIn('id', ids);
+  }
+
   static async createAddressType(input) {
     const { code, label, description, is_default } = input;
 
