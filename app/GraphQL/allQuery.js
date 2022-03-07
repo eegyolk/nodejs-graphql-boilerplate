@@ -1,102 +1,96 @@
 const { GraphQLObjectType, GraphQLList, GraphQLInt } = require('graphql');
 
-const { activityLogsType } = require('./ActivityLogs/types');
-const {
-  getActivityLogsResolver,
-  getActivityLogResolver,
-} = require('./ActivityLogs/resolvers');
+const { activityLogsType } = require('./ActivityLogs/types'),
+  {
+    getActivityLogsResolver,
+    getActivityLogResolver,
+  } = require('./ActivityLogs/resolvers');
 
-const { addressTypesType } = require('./AddressTypes/types');
-const {
-  getAddressTypesResolver,
-  getAddressTypeResolver,
-} = require('./AddressTypes/resolvers');
+const { addressTypesType } = require('./AddressTypes/types'),
+  {
+    getAddressTypesResolver,
+    getAddressTypeResolver,
+  } = require('./AddressTypes/resolvers');
 
-const { appModulesType } = require('./AppModules/types');
-const {
-  getAppModulesResolver,
-  getAppModuleResolver,
-} = require('./AppModules/resolvers');
+const { appModulesType } = require('./AppModules/types'),
+  {
+    getAppModulesResolver,
+    getAppModuleResolver,
+  } = require('./AppModules/resolvers');
 
-const { devicesType } = require('./Devices/types');
-const {
-  getDevicesResolver,
-  getDeviceResolver,
-} = require('./Devices/resolvers');
+const { devicesType } = require('./Devices/types'),
+  { getDevicesResolver, getDeviceResolver } = require('./Devices/resolvers');
 
-const { emailTypesType } = require('./EmailTypes/types');
-const {
-  getEmailTypesResolvers,
-  getEmailTypeResolvers,
-} = require('./EmailTypes/resolvers');
+const { emailTypesType } = require('./EmailTypes/types'),
+  {
+    getEmailTypesResolvers,
+    getEmailTypeResolvers,
+  } = require('./EmailTypes/resolvers');
 
-const { personasType } = require('./Personas/types');
-const {
-  getPersonasResolver,
-  getPersonaResolver,
-} = require('./Personas/resolvers');
+const { personasType } = require('./Personas/types'),
+  { getPersonasResolver, getPersonaResolver } = require('./Personas/resolvers');
 
-const { phoneTypesType } = require('./PhoneTypes/types');
-const {
-  getPhoneTypesResolver,
-  getPhoneTypeResolver,
-} = require('./PhoneTypes/resolvers');
+const { phoneTypesType } = require('./PhoneTypes/types'),
+  {
+    getPhoneTypesResolver,
+    getPhoneTypeResolver,
+  } = require('./PhoneTypes/resolvers');
 
 const {
-  roleAppModulePermissionsType,
-} = require('./RoleAppModulePermissions/types');
-const {
-  getRoleAppModulePermissionsResolver,
-  getRoleAppModulePermissionResolver,
-} = require('./RoleAppModulePermissions/resolvers');
+    roleAppModulePermissionsType,
+  } = require('./RoleAppModulePermissions/types'),
+  {
+    getRoleAppModulePermissionsResolver,
+    getRoleAppModulePermissionResolver,
+  } = require('./RoleAppModulePermissions/resolvers');
 
-const { rolesType } = require('./Roles/types');
-const { getRolesResolver, getRoleResolver } = require('./Roles/resolvers');
+const { rolesType } = require('./Roles/types'),
+  { getRolesResolver, getRoleResolver } = require('./Roles/resolvers');
 
-const { socialNetworksType } = require('./SocialNetworks/types');
-const {
-  getSocialNetworksResolver,
-  getSocialNetworkResolver,
-} = require('./SocialNetworks/resolvers');
+const { socialNetworksType } = require('./SocialNetworks/types'),
+  {
+    getSocialNetworksResolver,
+    getSocialNetworkResolver,
+  } = require('./SocialNetworks/resolvers');
 
-const { userAddressesType } = require('./UserAddresses/types');
-const {
-  getUserAddressesResolvers,
-  getUserAddressResolvers,
-} = require('./UserAddresses/resolvers');
+const { userAddressesType } = require('./UserAddresses/types'),
+  {
+    getUserAddressesResolvers,
+    getUserAddressResolvers,
+  } = require('./UserAddresses/resolvers');
 
-const { userEmailsType } = require('./UserEmails/types');
-const {
-  getUserEmailsResolver,
-  getUserEmailResolver,
-} = require('./UserEmails/resolvers');
+const { userEmailsType } = require('./UserEmails/types'),
+  {
+    getUserEmailsResolver,
+    getUserEmailResolver,
+  } = require('./UserEmails/resolvers');
 
-const { userPersonasType } = require('./UserPersonas/types');
-const {
-  getUserPersonasResolver,
-  getUserPersonaResolver,
-} = require('./UserPersonas/resolvers');
+const { userPersonasType } = require('./UserPersonas/types'),
+  {
+    getUserPersonasResolver,
+    getUserPersonaResolver,
+  } = require('./UserPersonas/resolvers');
 
-const { userPhonesType } = require('./UserPhones/types');
-const {
-  getUserPhonesResolver,
-  getUserPhoneResolver,
-} = require('./UserPhones/resolvers');
+const { userPhonesType } = require('./UserPhones/types'),
+  {
+    getUserPhonesResolver,
+    getUserPhoneResolver,
+  } = require('./UserPhones/resolvers');
 
-const { userRolesType } = require('./UserRoles/types');
-const {
-  getUserRolesResolver,
-  getUserRoleResolver,
-} = require('./UserRoles/resolvers');
+const { userRolesType } = require('./UserRoles/types'),
+  {
+    getUserRolesResolver,
+    getUserRoleResolver,
+  } = require('./UserRoles/resolvers');
 
-const { usersType } = require('./Users/types');
-const { getUsersResolver, getUserResolver } = require('./Users/resolvers');
+const { usersType } = require('./Users/types'),
+  { getUsersResolver, getUserResolver } = require('./Users/resolvers');
 
-const { userSocialNetworksType } = require('./UserSocialNetwork/types');
-const {
-  getUserSocialNetworksResolver,
-  getUserSocialNetworkResolver,
-} = require('./UserSocialNetwork/resolvers');
+const { userSocialNetworksType } = require('./UserSocialNetwork/types'),
+  {
+    getUserSocialNetworksResolver,
+    getUserSocialNetworkResolver,
+  } = require('./UserSocialNetwork/resolvers');
 
 const queries = new GraphQLObjectType({
   name: 'Query',
