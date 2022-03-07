@@ -93,7 +93,7 @@ const { userSocialNetworksType } = require('./UserSocialNetwork/types'),
   } = require('./UserSocialNetwork/resolvers');
 
 const queries = new GraphQLObjectType({
-  name: 'Query',
+  name: 'Queries',
   fields: {
     activityLogs: {
       type: new GraphQLList(activityLogsType),

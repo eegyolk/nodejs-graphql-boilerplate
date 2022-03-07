@@ -24,12 +24,16 @@ const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
   { personasType } = require('./Personas/types');
 
+const { createPhoneTypeInputType } = require('./PhoneTypes/inputTypes'),
+  { createPhoneTypeResolver } = require('./PhoneTypes/resolvers'),
+  { phoneTypesType } = require('./PhoneTypes/types');
+
 const { createSocialNetworkInputType } = require('./SocialNetworks/inputTypes'),
   { createSocialNetworkResolver } = require('./SocialNetworks/resolvers'),
   { socialNetworksType } = require('./SocialNetworks/types');
 
 const mutations = new GraphQLObjectType({
-  name: 'Mutation',
+  name: 'Mutations',
   fields: {
     createActivityLog: {
       type: activityLogsType,
@@ -77,6 +81,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createPersonaInputType },
       },
       resolve: async (source, args) => await createPersonaResolver(args),
+    },
+
+    createPhoneType: {
+      type: phoneTypesType,
+      args: {
+        input: { type: createPhoneTypeInputType },
+      },
+      resolve: async (source, args) => await createPhoneTypeResolver(args),
     },
 
     createSocialNetwork: {
