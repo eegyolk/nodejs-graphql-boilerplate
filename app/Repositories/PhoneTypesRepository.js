@@ -9,6 +9,10 @@ class PhoneTypesRepository {
     return await PhoneTypes.query().findById(id);
   }
 
+  static async getPhoneTypes(ids) {
+    return await PhoneTypes.query().whereIn('id', ids);
+  }
+
   static async createPhoneType(input) {
     const { code, label, description, sub_type, is_default } = input;
 

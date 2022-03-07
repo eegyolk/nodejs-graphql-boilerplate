@@ -22,6 +22,16 @@ const getPhoneTypeResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const getPhoneTypesResolver = async (ids) => {
+  const result = await PhoneTypesRepository.getPhoneTypes(ids);
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${id}`, {});
+};
+
 const createPhoneTypeResolver = async (args) => {
   return await PhoneTypesRepository.createPhoneType(args.input);
 };
@@ -29,5 +39,6 @@ const createPhoneTypeResolver = async (args) => {
 module.exports = {
   phoneTypesResolver,
   getPhoneTypeResolver,
+  getPhoneTypesResolver,
   createPhoneTypeResolver,
 };
