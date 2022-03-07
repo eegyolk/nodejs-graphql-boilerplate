@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const UserPersonasRepository = require('../../Repositories/UserPersonasRepository');
 
-const getUserPersonasResolver = async () => {
-  const result = await UserPersonasRepository.getUserPersonas();
+const userPersonasResolver = async () => {
+  const result = await UserPersonasRepository.userPersonas();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createUserPersonaResolver = async (args) => {
 };
 
 module.exports = {
-  getUserPersonasResolver,
+  userPersonasResolver,
   getUserPersonaResolver,
   createUserPersonaResolver,
 };

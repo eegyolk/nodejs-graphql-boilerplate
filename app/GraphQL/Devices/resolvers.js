@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const DevicesRepository = require('../../Repositories/DevicesRepository');
 
-const getDevicesResolver = async () => {
-  const result = await DevicesRepository.getDevices();
+const devicesResolver = async () => {
+  const result = await DevicesRepository.devices();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createDeviceResolver = async (args) => {
 };
 
 module.exports = {
-  getDevicesResolver,
+  devicesResolver,
   getDeviceResolver,
   createDeviceResolver,
 };

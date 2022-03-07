@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const AddressTypesRepository = require('../../Repositories/AddressTypesRepository');
 
-const getAddressTypesResolver = async () => {
-  const result = await AddressTypesRepository.getAddressTypes();
+const addressTypesResolver = async () => {
+  const result = await AddressTypesRepository.addressTypes();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createAddressTypeResolver = async (args) => {
 };
 
 module.exports = {
-  getAddressTypesResolver,
+  addressTypesResolver,
   getAddressTypeResolver,
   createAddressTypeResolver,
 };

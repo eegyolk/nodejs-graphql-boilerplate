@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const RolesRepository = require('../../Repositories/RolesRepository');
 
-const getRolesResolver = async () => {
-  const result = await RolesRepository.getRoles();
+const rolesResolver = async () => {
+  const result = await RolesRepository.roles();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createRoleResolver = async (args) => {
 };
 
 module.exports = {
-  getRolesResolver,
+  rolesResolver,
   getRoleResolver,
   createRoleResolver,
 };

@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const SocialNetworksRepository = require('../../Repositories/SocialNetworksRepository');
 
-const getSocialNetworksResolver = async () => {
-  const result = await SocialNetworksRepository.getSocialNetworks();
+const socialNetworksResolver = async () => {
+  const result = await SocialNetworksRepository.socialNetworks();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createSocialNetworkResolver = async (args) => {
 };
 
 module.exports = {
-  getSocialNetworksResolver,
+  socialNetworksResolver,
   getSocialNetworkResolver,
   createSocialNetworkResolver,
 };

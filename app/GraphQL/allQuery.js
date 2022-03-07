@@ -7,37 +7,37 @@ const {
 
 const { activityLogsType } = require('./ActivityLogs/types'),
   {
-    getActivityLogsResolver,
+    activityLogsResolver,
     getActivityLogResolver,
   } = require('./ActivityLogs/resolvers');
 
 const { addressTypesType } = require('./AddressTypes/types'),
   {
-    getAddressTypesResolver,
+    addressTypesResolver,
     getAddressTypeResolver,
   } = require('./AddressTypes/resolvers');
 
 const { appModulesType } = require('./AppModules/types'),
   {
-    getAppModulesResolver,
+    appModulesResolver,
     getAppModuleResolver,
   } = require('./AppModules/resolvers');
 
 const { devicesType } = require('./Devices/types'),
-  { getDevicesResolver, getDeviceResolver } = require('./Devices/resolvers');
+  { devicesResolver, getDeviceResolver } = require('./Devices/resolvers');
 
 const { emailTypesType } = require('./EmailTypes/types'),
   {
-    getEmailTypesResolvers,
+    emailTypesResolvers,
     getEmailTypeResolvers,
   } = require('./EmailTypes/resolvers');
 
 const { personasType } = require('./Personas/types'),
-  { getPersonasResolver, getPersonaResolver } = require('./Personas/resolvers');
+  { personasResolver, getPersonaResolver } = require('./Personas/resolvers');
 
 const { phoneTypesType } = require('./PhoneTypes/types'),
   {
-    getPhoneTypesResolver,
+    phoneTypesResolver,
     getPhoneTypeResolver,
   } = require('./PhoneTypes/resolvers');
 
@@ -45,55 +45,52 @@ const {
     roleAppModulePermissionsType,
   } = require('./RoleAppModulePermissions/types'),
   {
-    getRoleAppModulePermissionsResolver,
+    roleAppModulePermissionsResolver,
     getRoleAppModulePermissionResolver,
   } = require('./RoleAppModulePermissions/resolvers');
 
 const { rolesType } = require('./Roles/types'),
-  { getRolesResolver, getRoleResolver } = require('./Roles/resolvers');
+  { rolesResolver, getRoleResolver } = require('./Roles/resolvers');
 
 const { socialNetworksType } = require('./SocialNetworks/types'),
   {
-    getSocialNetworksResolver,
+    socialNetworksResolver,
     getSocialNetworkResolver,
   } = require('./SocialNetworks/resolvers');
 
 const { userAddressesType } = require('./UserAddresses/types'),
   {
-    getUserAddressesResolver,
+    userAddressesResolver,
     getUserAddressResolver,
   } = require('./UserAddresses/resolvers');
 
 const { userEmailsType } = require('./UserEmails/types'),
   {
-    getUserEmailsResolver,
+    userEmailsResolver,
     getUserEmailResolver,
   } = require('./UserEmails/resolvers');
 
 const { userPersonasType } = require('./UserPersonas/types'),
   {
-    getUserPersonasResolver,
+    userPersonasResolver,
     getUserPersonaResolver,
   } = require('./UserPersonas/resolvers');
 
 const { userPhonesType } = require('./UserPhones/types'),
   {
-    getUserPhonesResolver,
+    userPhonesResolver,
     getUserPhoneResolver,
   } = require('./UserPhones/resolvers');
 
 const { userRolesType } = require('./UserRoles/types'),
-  {
-    getUserRolesResolver,
-    getUserRoleResolver,
-  } = require('./UserRoles/resolvers');
+  { userRolesResolver, getUserRoleResolver } = require('./UserRoles/resolvers');
 
 const { usersType } = require('./Users/types'),
-  { getUsersResolver, getUserResolver } = require('./Users/resolvers');
+  { usersResolver, getUserResolver } = require('./Users/resolvers');
 
 const { userSocialNetworksType } = require('./UserSocialNetwork/types'),
   {
-    getUserSocialNetworksResolver,
+    userSocialNetworksResolver,
     getUserSocialNetworkResolver,
   } = require('./UserSocialNetwork/resolvers');
 
@@ -102,7 +99,7 @@ const queries = new GraphQLObjectType({
   fields: {
     activityLogs: {
       type: new GraphQLList(activityLogsType),
-      resolve: async () => await getActivityLogsResolver(),
+      resolve: async () => await activityLogsResolver(),
     },
     getActivityLog: {
       type: activityLogsType,
@@ -114,7 +111,7 @@ const queries = new GraphQLObjectType({
 
     addressTypes: {
       type: new GraphQLList(addressTypesType),
-      resolve: async () => await getAddressTypesResolver(),
+      resolve: async () => await addressTypesResolver(),
     },
     getAddressType: {
       type: addressTypesType,
@@ -126,7 +123,7 @@ const queries = new GraphQLObjectType({
 
     appModules: {
       type: new GraphQLList(appModulesType),
-      resolve: async () => await getAppModulesResolver(),
+      resolve: async () => await appModulesResolver(),
     },
     getAppModule: {
       type: appModulesType,
@@ -138,7 +135,7 @@ const queries = new GraphQLObjectType({
 
     devices: {
       type: new GraphQLList(devicesType),
-      resolve: async () => await getDevicesResolver(),
+      resolve: async () => await devicesResolver(),
     },
     getDevice: {
       type: devicesType,
@@ -150,7 +147,7 @@ const queries = new GraphQLObjectType({
 
     emailTypes: {
       type: new GraphQLList(emailTypesType),
-      resolve: async () => await getEmailTypesResolvers(),
+      resolve: async () => await emailTypesResolvers(),
     },
     getEmailType: {
       type: emailTypesType,
@@ -162,7 +159,7 @@ const queries = new GraphQLObjectType({
 
     personas: {
       type: new GraphQLList(personasType),
-      resolve: async () => await getPersonasResolver(),
+      resolve: async () => await personasResolver(),
     },
     getPersona: {
       type: personasType,
@@ -174,7 +171,7 @@ const queries = new GraphQLObjectType({
 
     phoneTypes: {
       type: new GraphQLList(phoneTypesType),
-      resolve: async () => await getPhoneTypesResolver(),
+      resolve: async () => await phoneTypesResolver(),
     },
     getPhoneType: {
       type: phoneTypesType,
@@ -186,7 +183,7 @@ const queries = new GraphQLObjectType({
 
     roleAppModulePermissions: {
       type: new GraphQLList(roleAppModulePermissionsType),
-      resolve: async () => await getRoleAppModulePermissionsResolver(),
+      resolve: async () => await roleAppModulePermissionsResolver(),
     },
     getRoleAppModulePermission: {
       type: roleAppModulePermissionsType,
@@ -199,7 +196,7 @@ const queries = new GraphQLObjectType({
 
     roles: {
       type: new GraphQLList(rolesType),
-      resolve: async () => await getRolesResolver(),
+      resolve: async () => await rolesResolver(),
     },
     getRole: {
       type: rolesType,
@@ -211,7 +208,7 @@ const queries = new GraphQLObjectType({
 
     socialNetworks: {
       type: new GraphQLList(socialNetworksType),
-      resolve: async () => await getSocialNetworksResolver(),
+      resolve: async () => await socialNetworksResolver(),
     },
     getSocialNetwork: {
       type: socialNetworksType,
@@ -223,7 +220,7 @@ const queries = new GraphQLObjectType({
 
     userAddresses: {
       type: new GraphQLList(userAddressesType),
-      resolve: async () => await getUserAddressesResolver(),
+      resolve: async () => await userAddressesResolver(),
     },
     getUserAddress: {
       type: userAddressesType,
@@ -235,7 +232,7 @@ const queries = new GraphQLObjectType({
 
     userEmails: {
       type: new GraphQLList(userEmailsType),
-      resolve: async () => await getUserEmailsResolver(),
+      resolve: async () => await userEmailsResolver(),
     },
     getUserEmail: {
       type: userEmailsType,
@@ -247,7 +244,7 @@ const queries = new GraphQLObjectType({
 
     userPersonas: {
       type: new GraphQLList(userPersonasType),
-      resolve: async () => await getUserPersonasResolver(),
+      resolve: async () => await userPersonasResolver(),
     },
     getUserPersona: {
       type: userPersonasType,
@@ -259,7 +256,7 @@ const queries = new GraphQLObjectType({
 
     userPhones: {
       type: new GraphQLList(userPhonesType),
-      resolve: async () => await getUserPhonesResolver(),
+      resolve: async () => await userPhonesResolver(),
     },
     getUserPhone: {
       type: userPhonesType,
@@ -271,7 +268,7 @@ const queries = new GraphQLObjectType({
 
     userRoles: {
       type: new GraphQLList(userRolesType),
-      resolve: async () => await getUserRolesResolver(),
+      resolve: async () => await userRolesResolver(),
     },
     getUserRole: {
       type: userRolesType,
@@ -283,7 +280,7 @@ const queries = new GraphQLObjectType({
 
     users: {
       type: new GraphQLList(usersType),
-      resolve: async () => await getUsersResolver(),
+      resolve: async () => await usersResolver(),
     },
     getUser: {
       type: usersType,
@@ -295,7 +292,7 @@ const queries = new GraphQLObjectType({
 
     userSocialNetworks: {
       type: new GraphQLList(userSocialNetworksType),
-      resolve: async () => await getUserSocialNetworksResolver(),
+      resolve: async () => await userSocialNetworksResolver(),
     },
     getUserSocialNetwork: {
       type: userSocialNetworksType,

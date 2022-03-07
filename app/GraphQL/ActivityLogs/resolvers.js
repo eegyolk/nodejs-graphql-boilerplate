@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const ActivityLogsRepository = require('../../Repositories/ActivityLogsRepository');
 
-const getActivityLogsResolver = async () => {
-  const result = await ActivityLogsRepository.getActivityLogs();
+const activityLogsResolver = async () => {
+  const result = await ActivityLogsRepository.activityLogs();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createActivityLogResolver = async (args) => {
 };
 
 module.exports = {
-  getActivityLogsResolver,
+  activityLogsResolver,
   getActivityLogResolver,
   createActivityLogResolver,
 };

@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const UserEmailsRepository = require('../../Repositories/UserEmailsRepository');
 
-const getUserEmailsResolver = async () => {
-  const result = await UserEmailsRepository.getUserEmails();
+const userEmailsResolver = async () => {
+  const result = await UserEmailsRepository.userEmails();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createUserEmailResolver = async (args) => {
 };
 
 module.exports = {
-  getUserEmailsResolver,
+  userEmailsResolver,
   getUserEmailResolver,
   createUserEmailResolver,
 };

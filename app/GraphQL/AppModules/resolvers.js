@@ -2,8 +2,8 @@ const { GraphQLError } = require('graphql');
 
 const AppModulesRepository = require('../../Repositories/AppModulesRepository');
 
-const getAppModulesResolver = async () => {
-  const result = await AppModulesRepository.getAppModules();
+const appModulesResolver = async () => {
+  const result = await AppModulesRepository.appModules();
 
   if (result.length > 0) {
     return result;
@@ -27,7 +27,7 @@ const createAppModuleResolver = async (args) => {
 };
 
 module.exports = {
-  getAppModulesResolver,
+  appModulesResolver,
   getAppModuleResolver,
   createAppModuleResolver,
 };

@@ -2,9 +2,9 @@ const { GraphQLError } = require('graphql');
 
 const RoleAppModulePermissionsRepository = require('../../Repositories/RoleAppModulePermissionsRepository');
 
-const getRoleAppModulePermissionsResolver = async () => {
+const roleAppModulePermissionsResolver = async () => {
   const result =
-    await RoleAppModulePermissionsRepository.getRoleAppModulePermissions();
+    await RoleAppModulePermissionsRepository.roleAppModulePermissions();
 
   if (result.length > 0) {
     return result;
@@ -31,7 +31,7 @@ const createRoleAppModulePermissionResolver = async (args) => {
 };
 
 module.exports = {
-  getRoleAppModulePermissionsResolver,
+  roleAppModulePermissionsResolver,
   getRoleAppModulePermissionResolver,
   createRoleAppModulePermissionResolver,
 };
