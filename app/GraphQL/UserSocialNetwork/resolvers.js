@@ -22,7 +22,12 @@ const getUserSocialNetworkResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createUserSocialNetworkResolver = async (args) => {
+  return await UserSocialNetworksRepository.createUserSocialNetwork(args.input);
+};
+
 module.exports = {
   getUserSocialNetworksResolver,
   getUserSocialNetworkResolver,
+  createUserSocialNetworkResolver,
 };
