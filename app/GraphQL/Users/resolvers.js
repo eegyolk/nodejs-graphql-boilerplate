@@ -1,3 +1,4 @@
+const PasswordHasher = require('../../Classes/PasswordHasher');
 const UsersRepository = require('../../Repositories/UsersRepository');
 
 const usersResolver = async () => {
@@ -9,7 +10,12 @@ const getUserResolver = async (id) => {
 };
 
 const createUserResolver = async (args) => {
-  return await UsersRepository.createUser(args.input);
+  const { input } = args;
+  const tempPassword = input.password;
+
+  input.password = PasswordHasher.make(tempPassword);
+
+  return await UsersRepository.createUser(input);
 };
 
 module.exports = {
