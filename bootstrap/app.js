@@ -65,6 +65,7 @@ module.exports.extendApp = function ({ app }) {
     mutation: allMutation,
   });
   app.use(
+    '/graphql',
     graphqlHTTP({
       schema,
       context: {
