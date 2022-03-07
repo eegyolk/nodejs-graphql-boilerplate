@@ -23,11 +23,7 @@ const getSocialNetworkResolver = async (id) => {
 };
 
 const createSocialNetworkResolver = async (args) => {
-  try {
-    return await SocialNetworksRepository.createSocialNetwork(args.input);
-  } catch (err) {
-    return err;
-  }
+  return await SocialNetworksRepository.createSocialNetwork(args.input);
 };
 
 module.exports = {

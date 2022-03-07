@@ -46,6 +46,10 @@ const { createSocialNetworkInputType } = require('./SocialNetworks/inputTypes'),
   { createSocialNetworkResolver } = require('./SocialNetworks/resolvers'),
   { socialNetworksType } = require('./SocialNetworks/types');
 
+const { createUserAddressInputType } = require('./UserAddresses/inputTypes'),
+  { createUserAddressResolver } = require('./UserAddresses/resolvers'),
+  { userAddressesType } = require('./UserAddresses/types');
+
 const mutations = new GraphQLObjectType({
   name: 'Mutations',
   fields: {
@@ -128,6 +132,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createSocialNetworkInputType },
       },
       resolve: async (source, args) => await createSocialNetworkResolver(args),
+    },
+
+    createUserAddress: {
+      type: userAddressesType,
+      args: {
+        input: { type: createUserAddressInputType },
+      },
+      resolve: async (source, args) => await createUserAddressResolver(args),
     },
   },
 });

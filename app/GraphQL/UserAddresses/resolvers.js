@@ -2,7 +2,7 @@ const { GraphQLError } = require('graphql');
 
 const UserAddressesRepository = require('../../Repositories/UserAddressesRepository');
 
-const getUserAddressesResolvers = async () => {
+const getUserAddressesResolver = async () => {
   const result = await UserAddressesRepository.getUserAddresses();
 
   if (result.length > 0) {
@@ -12,7 +12,7 @@ const getUserAddressesResolvers = async () => {
   return new GraphQLError('No data found', {});
 };
 
-const getUserAddressResolvers = async (id) => {
+const getUserAddressResolver = async (id) => {
   const result = await UserAddressesRepository.getUserAddress(id);
 
   if (result) {
@@ -22,7 +22,12 @@ const getUserAddressResolvers = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createUserAddressResolver = async (args) => {
+  return await UserAddressesRepository.createUserAddress(args.input);
+};
+
 module.exports = {
-  getUserAddressesResolvers,
-  getUserAddressResolvers,
+  getUserAddressesResolver,
+  getUserAddressResolver,
+  createUserAddressResolver,
 };
