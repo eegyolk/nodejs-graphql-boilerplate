@@ -9,6 +9,10 @@ class PersonasRepository {
     return await Personas.query().findById(id);
   }
 
+  static async getPersonas(ids) {
+    return await Personas.query().whereIn('id', ids);
+  }
+
   static async createPersona(input) {
     const { code, label, description, is_active } = input;
 

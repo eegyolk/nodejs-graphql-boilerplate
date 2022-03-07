@@ -22,6 +22,16 @@ const getPersonaResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const getPersonasResolver = async (ids) => {
+  const result = await PersonasRepository.getPersonas(ids);
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  return new GraphQLError(`No data found for id ${id}`, {});
+};
+
 const createPersonaResolver = async (args) => {
   return await PersonasRepository.createPersona(args.input);
 };
@@ -29,5 +39,6 @@ const createPersonaResolver = async (args) => {
 module.exports = {
   personasResolver,
   getPersonaResolver,
+  getPersonasResolver,
   createPersonaResolver,
 };
