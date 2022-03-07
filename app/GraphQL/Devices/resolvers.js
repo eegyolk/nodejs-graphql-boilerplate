@@ -22,7 +22,12 @@ const getDeviceResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createDeviceResolver = async (args) => {
+  return await DevicesRepository.createDevice(args.input);
+};
+
 module.exports = {
   getDevicesResolver,
   getDeviceResolver,
+  createDeviceResolver,
 };
