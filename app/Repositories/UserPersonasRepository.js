@@ -8,6 +8,16 @@ class UserPersonasRepository {
   static async getUserPersona(id) {
     return await UserPersonas.query().findById(id);
   }
+
+  static async createUserPersona(input) {
+    const { user_id, persona_id, is_default } = input;
+
+    return await UserPersonas.query().insert({
+      user_id,
+      persona_id,
+      is_default,
+    });
+  }
 }
 
 module.exports = UserPersonasRepository;
