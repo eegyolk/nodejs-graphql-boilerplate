@@ -22,7 +22,12 @@ const getUserEmailResolver = async (id) => {
   return new GraphQLError(`No data found for id ${id}`, {});
 };
 
+const createUserEmailResolver = async (args) => {
+  return await UserEmailsRepository.createUserEmail(args.input);
+};
+
 module.exports = {
   getUserEmailsResolver,
   getUserEmailResolver,
+  createUserEmailResolver,
 };
