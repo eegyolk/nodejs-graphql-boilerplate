@@ -1,7 +1,7 @@
 const SocialNetworks = require('../Models/SocialNetworks');
 
 class SocialNetworksRepository {
-  static async getSocialNetworks() {
+  static async socialNetworks() {
     return await SocialNetworks.query();
   }
 

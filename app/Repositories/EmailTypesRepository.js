@@ -1,7 +1,7 @@
 const EmailTypes = require('../Models/EmailTypes');
 
 class EmailTypesRepository {
-  static async getEmailTypes() {
+  static async emailTypes() {
     return await EmailTypes.query();
   }
 

@@ -1,7 +1,7 @@
 const AddressTypes = require('../Models/AddressTypes');
 
 class AddressTypesRepository {
-  static async getAddressTypes() {
+  static async addressTypes() {
     return await AddressTypes.query();
   }
 

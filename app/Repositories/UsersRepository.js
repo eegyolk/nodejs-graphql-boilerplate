@@ -1,7 +1,7 @@
 const Users = require('../Models/Users');
 
 class UsersRepository {
-  static async getUsers() {
+  static async users() {
     return await Users.query();
   }
 

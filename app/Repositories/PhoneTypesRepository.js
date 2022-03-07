@@ -1,7 +1,7 @@
 const PhoneTypes = require('../Models/PhoneTypes');
 
 class PhoneTypesRepository {
-  static async getPhoneTypes() {
+  static async phoneTypes() {
     return await PhoneTypes.query();
   }
 

@@ -1,7 +1,7 @@
 const UserRoles = require('../Models/UserRoles');
 
 class UserRolesRepository {
-  static async getUserRoles() {
+  static async userRoles() {
     return await UserRoles.query();
   }
 

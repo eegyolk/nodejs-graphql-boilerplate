@@ -1,7 +1,7 @@
 const UserAddresses = require('../Models/UserAddresses');
 
 class UserAddressesRepository {
-  static async getUserAddresses() {
+  static async userAddresses() {
     return await UserAddresses.query();
   }
 

@@ -1,7 +1,7 @@
 const AppModules = require('../Models/AppModules');
 
 class AppModulesRepository {
-  static async getAppModules() {
+  static async appModules() {
     return await AppModules.query();
   }
 

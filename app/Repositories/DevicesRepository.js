@@ -1,7 +1,7 @@
 const Devices = require('../Models/Devices');
 
 class DevicesRepository {
-  static async getDevices() {
+  static async devices() {
     return await Devices.query();
   }
 

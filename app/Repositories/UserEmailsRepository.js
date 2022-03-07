@@ -1,7 +1,7 @@
 const UserEmails = require('../Models/UserEmails');
 
 class UserEmailsRepository {
-  static async getUserEmails() {
+  static async userEmails() {
     return await UserEmails.query();
   }
 

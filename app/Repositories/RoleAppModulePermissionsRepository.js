@@ -1,7 +1,7 @@
 const RoleAppModulePermissions = require('../Models/RoleAppModulePermissions');
 
 class RoleAppModulePermissionsRepository {
-  static async getRoleAppModulePermissions() {
+  static async roleAppModulePermissions() {
     return await RoleAppModulePermissions.query();
   }
 

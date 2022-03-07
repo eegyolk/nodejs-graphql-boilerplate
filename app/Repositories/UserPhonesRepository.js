@@ -1,7 +1,7 @@
 const UserPhones = require('../Models/UserPhones');
 
 class UserPhonesRepository {
-  static async getUserPhones() {
+  static async userPhones() {
     return await UserPhones.query();
   }
 

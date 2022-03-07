@@ -1,7 +1,7 @@
 const UserSocialNetworks = require('../Models/UserSocialNetworks');
 
 class UserSocialNetworksRepository {
-  static async getUserSocialNetworks() {
+  static async userSocialNetworks() {
     return await UserSocialNetworks.query();
   }
 
