@@ -11,15 +11,15 @@ const { getSocialNetworksLoader } = require('./SocialNetworks/loaders');
 const { getUsersLoader } = require('./Users/loaders');
 
 const loaders = {
-  addressTypes: new DataLoader((ids) => getAddressTypesLoader(ids)),
-  appModules: new DataLoader((ids) => getAppModulesLoader(ids)),
-  devices: new DataLoader((ids) => getDevicesLoader(ids)),
-  emailTypes: new DataLoader((ids) => getEmailTypesLoader(ids)),
-  personas: new DataLoader((ids) => getPersonasLoader(ids)),
-  phoneTypes: new DataLoader((ids) => getPhoneTypesLoader(ids)),
-  roles: new DataLoader((ids) => getRolesLoader(ids)),
-  socialNetworks: new DataLoader((ids) => getSocialNetworksLoader(ids)),
-  users: new DataLoader((ids) => getUsersLoader(ids)),
+  addressTypes: new DataLoader(getAddressTypesLoader),
+  appModules: new DataLoader(getAppModulesLoader),
+  devices: new DataLoader(getDevicesLoader),
+  emailTypes: new DataLoader(getEmailTypesLoader),
+  personas: new DataLoader(getPersonasLoader),
+  phoneTypes: new DataLoader(getPhoneTypesLoader),
+  roles: new DataLoader(getRolesLoader),
+  socialNetworks: new DataLoader(getSocialNetworksLoader),
+  users: new DataLoader(getUsersLoader),
 };
 
 module.exports = loaders;
