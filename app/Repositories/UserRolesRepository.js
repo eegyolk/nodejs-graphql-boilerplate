@@ -11,6 +11,10 @@ class UserRolesRepository {
     return await UserRoles.query().select(raw(fields)).findById(id);
   }
 
+  static async getUserRoleIdByUserId(userId) {
+    return await UserRoles.query().select('id').where('user_id', userId);
+  }
+
   static async createUserRole(input) {
     const { user_id, role_id } = input;
 

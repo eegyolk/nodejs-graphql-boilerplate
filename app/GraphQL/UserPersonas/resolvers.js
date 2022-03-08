@@ -19,7 +19,9 @@ const getUserPersonaResolver = async (id, info) => {
 };
 
 const getUserPersonaIdByUserIdResolver = async (userId) => {
-  return await UserPersonasRepository.getUserPersonaIdByUserId(userId);
+  const result = await UserPersonasRepository.getUserPersonaIdByUserId(userId);
+
+  return result.map((item) => item.id);
 };
 
 const createUserPersonaResolver = async (args) => {

@@ -24,9 +24,10 @@ const getUserSocialNetworkResolver = async (id, info) => {
 };
 
 const getUserSocialNetworkIdByUserIdResolver = async (userId) => {
-  return await UserSocialNetworksRepository.getUserSocialNetworkIdByUserId(
-    userId
-  );
+  const result =
+    await UserSocialNetworksRepository.getUserSocialNetworkIdByUserId(userId);
+
+  return result.map((item) => item.id);
 };
 
 const createUserSocialNetworkResolver = async (args) => {

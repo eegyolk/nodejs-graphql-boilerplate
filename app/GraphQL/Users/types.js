@@ -14,6 +14,7 @@ const {
   getUserPersonaIdByUserIdResolver,
 } = require('../UserPersonas/resolvers');
 const { getUserPhoneIdByUserIdResolver } = require('../UserPhones/resolvers');
+const { getUserRoleIdByUserIdResolver } = require('../UserRoles/resolvers');
 const {
   getUserSocialNetworkIdByUserIdResolver,
 } = require('../UserSocialNetworks/resolvers');
@@ -48,6 +49,10 @@ const usersType = new GraphQLObjectType({
     userPhoneIds: {
       type: new GraphQLList(GraphQLInt),
       resolve: (source) => getUserPhoneIdByUserIdResolver(source.id),
+    },
+    userRoleIds: {
+      type: new GraphQLList(GraphQLInt),
+      resolve: (source) => getUserRoleIdByUserIdResolver(source.id),
     },
     userSocialNetworkIds: {
       type: new GraphQLList(GraphQLInt),

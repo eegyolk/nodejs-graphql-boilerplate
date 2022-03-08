@@ -14,6 +14,7 @@ const usersResolver = async (info) => {
           'userEmailIds',
           'userPersonaIds',
           'userPhoneIds',
+          'userRoleIds',
           'userSocialNetworkIds',
         ],
       }
