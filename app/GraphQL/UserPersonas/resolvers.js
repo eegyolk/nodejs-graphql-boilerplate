@@ -18,6 +18,10 @@ const getUserPersonaResolver = async (id, info) => {
   return await UserPersonasRepository.getUserPersona(id, fields.join(','));
 };
 
+const getUserPersonaIdByUserIdResolver = async (userId) => {
+  return await UserPersonasRepository.getUserPersonaIdByUserId(userId);
+};
+
 const createUserPersonaResolver = async (args) => {
   return await UserPersonasRepository.createUserPersona(args.input);
 };
@@ -25,5 +29,6 @@ const createUserPersonaResolver = async (args) => {
 module.exports = {
   userPersonasResolver,
   getUserPersonaResolver,
+  getUserPersonaIdByUserIdResolver,
   createUserPersonaResolver,
 };

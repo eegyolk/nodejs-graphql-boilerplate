@@ -12,6 +12,7 @@ const usersResolver = async (info) => {
         excludedFields: [
           'userAddressIds',
           'userEmailIds',
+          'userPersonaIds',
           'userPhoneIds',
           'userSocialNetworkIds',
         ],
