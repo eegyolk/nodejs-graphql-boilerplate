@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const UserEmails = require('../Models/UserEmails');
 
 class UserEmailsRepository {
-  static async userEmails() {
-    return await UserEmails.query();
+  static async userEmails(fields) {
+    return await UserEmails.query().select(raw(fields));
   }
 
-  static async getUserEmail(id) {
-    return await UserEmails.query().findById(id);
+  static async getUserEmail(id, fields) {
+    return await UserEmails.query().select(raw(fields)).findById(id);
   }
 
   static async createUserEmail(input) {

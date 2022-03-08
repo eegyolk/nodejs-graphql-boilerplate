@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const UserSocialNetworks = require('../Models/UserSocialNetworks');
 
 class UserSocialNetworksRepository {
-  static async userSocialNetworks() {
-    return await UserSocialNetworks.query();
+  static async userSocialNetworks(fields) {
+    return await UserSocialNetworks.query().select(raw(fields));
   }
 
-  static async getUserSocialNetwork(id) {
-    return await UserSocialNetworks.query().findById(id);
+  static async getUserSocialNetwork(id, fields) {
+    return await UserSocialNetworks.query().select(raw(fields)).findById(id);
   }
 
   static async createUserSocialNetwork(input) {

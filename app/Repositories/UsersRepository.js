@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const Users = require('../Models/Users');
 
 class UsersRepository {
-  static async users() {
-    return await Users.query();
+  static async users(fields) {
+    return await Users.query().select(raw(fields));
   }
 
-  static async getUser(id) {
-    return await Users.query().findById(id);
+  static async getUser(id, fields) {
+    return await Users.query().select(raw(fields)).findById(id);
   }
 
   static async getUsers(ids) {

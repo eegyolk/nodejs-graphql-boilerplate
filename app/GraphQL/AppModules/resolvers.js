@@ -1,11 +1,17 @@
+const graphqlFields = require('graphql-fields');
+
 const AppModulesRepository = require('../../Repositories/AppModulesRepository');
 
-const appModulesResolver = async () => {
-  return await AppModulesRepository.appModules();
+const appModulesResolver = async (info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await AppModulesRepository.appModules(fields.join(','));
 };
 
-const getAppModuleResolver = async (id) => {
-  return await AppModulesRepository.getAppModule(id);
+const getAppModuleResolver = async (id, info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await AppModulesRepository.getAppModule(id, fields.join(','));
 };
 
 const createAppModuleResolver = async (args) => {

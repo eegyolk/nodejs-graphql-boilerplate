@@ -99,208 +99,238 @@ const queries = new GraphQLObjectType({
   fields: {
     activityLogs: {
       type: new GraphQLList(activityLogsType),
-      resolve: async () => await activityLogsResolver(),
+      resolve: async (source, args, context, info) =>
+        await activityLogsResolver(info),
     },
     getActivityLog: {
       type: activityLogsType,
       args: {
         id: { type: GraphQLString },
       },
-      resolve: async (source, args) => await getActivityLogResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getActivityLogResolver(args.id, info),
     },
 
     addressTypes: {
       type: new GraphQLList(addressTypesType),
-      resolve: async () => await addressTypesResolver(),
+      resolve: async (source, args, context, info) =>
+        await addressTypesResolver(info),
     },
     getAddressType: {
       type: addressTypesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getAddressTypeResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getAddressTypeResolver(args.id, info),
     },
 
     appModules: {
       type: new GraphQLList(appModulesType),
-      resolve: async () => await appModulesResolver(),
+      resolve: async (source, args, context, info) =>
+        await appModulesResolver(info),
     },
     getAppModule: {
       type: appModulesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getAppModuleResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getAppModuleResolver(args.id, info),
     },
 
     devices: {
       type: new GraphQLList(devicesType),
-      resolve: async () => await devicesResolver(),
+      resolve: async (source, args, context, info) =>
+        await devicesResolver(info),
     },
     getDevice: {
       type: devicesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getDeviceResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getDeviceResolver(args.id, info),
     },
 
     emailTypes: {
       type: new GraphQLList(emailTypesType),
-      resolve: async () => await emailTypesResolver(),
+      resolve: async (source, args, context, info) =>
+        await emailTypesResolver(info),
     },
     getEmailType: {
       type: emailTypesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getEmailTypeResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getEmailTypeResolver(args.id, info),
     },
 
     personas: {
       type: new GraphQLList(personasType),
-      resolve: async () => await personasResolver(),
+      resolve: async (source, args, context, info) =>
+        await personasResolver(info),
     },
     getPersona: {
       type: personasType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getPersonaResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getPersonaResolver(args.id, info),
     },
 
     phoneTypes: {
       type: new GraphQLList(phoneTypesType),
-      resolve: async () => await phoneTypesResolver(),
+      resolve: async (source, args, context, info) =>
+        await phoneTypesResolver(info),
     },
     getPhoneType: {
       type: phoneTypesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getPhoneTypeResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getPhoneTypeResolver(args.id, info),
     },
 
     roleAppModulePermissions: {
       type: new GraphQLList(roleAppModulePermissionsType),
-      resolve: async () => await roleAppModulePermissionsResolver(),
+      resolve: async (source, args, context, info) =>
+        await roleAppModulePermissionsResolver(info),
     },
     getRoleAppModulePermission: {
       type: roleAppModulePermissionsType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) =>
-        await getRoleAppModulePermissionResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getRoleAppModulePermissionResolver(args.id, info),
     },
 
     roles: {
       type: new GraphQLList(rolesType),
-      resolve: async () => await rolesResolver(),
+      resolve: async (source, args, context, info) => await rolesResolver(info),
     },
     getRole: {
       type: rolesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getRoleResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getRoleResolver(args.id, info),
     },
 
     socialNetworks: {
       type: new GraphQLList(socialNetworksType),
-      resolve: async () => await socialNetworksResolver(),
+      resolve: async (source, args, context, info) =>
+        await socialNetworksResolver(info),
     },
     getSocialNetwork: {
       type: socialNetworksType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getSocialNetworkResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getSocialNetworkResolver(args.id, info),
     },
 
     userAddresses: {
       type: new GraphQLList(userAddressesType),
-      resolve: async () => await userAddressesResolver(),
+      resolve: async (source, args, context, info) =>
+        await userAddressesResolver(info),
     },
     getUserAddress: {
       type: userAddressesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserAddressResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserAddressResolver(args.id, info),
     },
 
     userEmails: {
       type: new GraphQLList(userEmailsType),
-      resolve: async () => await userEmailsResolver(),
+      resolve: async (source, args, context, info) =>
+        await userEmailsResolver(info),
     },
     getUserEmail: {
       type: userEmailsType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserEmailResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserEmailResolver(args.id, info),
     },
 
     userPersonas: {
       type: new GraphQLList(userPersonasType),
-      resolve: async () => await userPersonasResolver(),
+      resolve: async (source, args, context, info) =>
+        await userPersonasResolver(info),
     },
     getUserPersona: {
       type: userPersonasType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserPersonaResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserPersonaResolver(args.id, info),
     },
 
     userPhones: {
       type: new GraphQLList(userPhonesType),
-      resolve: async () => await userPhonesResolver(),
+      resolve: async (source, args, context, info) =>
+        await userPhonesResolver(info),
     },
     getUserPhone: {
       type: userPhonesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserPhoneResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserPhoneResolver(args.id, info),
     },
 
     userRoles: {
       type: new GraphQLList(userRolesType),
-      resolve: async () => await userRolesResolver(),
+      resolve: async (source, args, context, info) =>
+        await userRolesResolver(info),
     },
     getUserRole: {
       type: userRolesType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserRoleResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserRoleResolver(args.id, info),
     },
 
     users: {
       type: new GraphQLList(usersType),
-      resolve: async () => await usersResolver(),
+      resolve: async (source, args, context, info) => await usersResolver(info),
     },
     getUser: {
       type: usersType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) => await getUserResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserResolver(args.id, info),
     },
 
     userSocialNetworks: {
       type: new GraphQLList(userSocialNetworksType),
-      resolve: async () => await userSocialNetworksResolver(),
+      resolve: async (source, args, context, info) =>
+        await userSocialNetworksResolver(info),
     },
     getUserSocialNetwork: {
       type: userSocialNetworksType,
       args: {
         id: { type: GraphQLInt },
       },
-      resolve: async (source, args) =>
-        await getUserSocialNetworkResolver(args.id),
+      resolve: async (source, args, context, info) =>
+        await getUserSocialNetworkResolver(args.id, info),
     },
   },
 });

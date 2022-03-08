@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const UserPhones = require('../Models/UserPhones');
 
 class UserPhonesRepository {
-  static async userPhones() {
-    return await UserPhones.query();
+  static async userPhones(fields) {
+    return await UserPhones.query().select(raw(fields));
   }
 
-  static async getUserPhone(id) {
-    return await UserPhones.query().findById(id);
+  static async getUserPhone(id, fields) {
+    return await UserPhones.query().select(raw(fields)).findById(id);
   }
 
   static async createUserPhone(input) {

@@ -1,12 +1,25 @@
+const graphqlFields = require('graphql-fields');
+
 const RoleAppModulePermissionsRepository = require('../../Repositories/RoleAppModulePermissionsRepository');
 
-const roleAppModulePermissionsResolver = async () => {
-  return await RoleAppModulePermissionsRepository.roleAppModulePermissions();
+const roleAppModulePermissionsResolver = async (info) => {
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['role', 'app_module'] })
+  );
+
+  return await RoleAppModulePermissionsRepository.roleAppModulePermissions(
+    fields.join(',')
+  );
 };
 
-const getRoleAppModulePermissionResolver = async (id) => {
+const getRoleAppModulePermissionResolver = async (id, info) => {
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['role', 'app_module'] })
+  );
+
   return await RoleAppModulePermissionsRepository.getRoleAppModulePermission(
-    id
+    id,
+    fields.join(',')
   );
 };
 

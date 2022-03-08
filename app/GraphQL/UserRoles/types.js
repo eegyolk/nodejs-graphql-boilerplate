@@ -19,7 +19,7 @@ const userRolesType = new GraphQLObjectType({
         loaders.users.load(source.user_id),
     },
     role_id: { type: new GraphQLNonNull(GraphQLInt) },
-    roles: {
+    role: {
       type: new GraphQLNonNull(rolesType),
       resolve: (source, args, { loaders }) =>
         loaders.roles.load(source.role_id),

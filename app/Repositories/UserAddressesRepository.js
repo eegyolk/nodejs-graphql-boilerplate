@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const UserAddresses = require('../Models/UserAddresses');
 
 class UserAddressesRepository {
-  static async userAddresses() {
-    return await UserAddresses.query();
+  static async userAddresses(fields) {
+    return await UserAddresses.query().select(raw(fields));
   }
 
-  static async getUserAddress(id) {
-    return await UserAddresses.query().findById(id);
+  static async getUserAddress(id, fields) {
+    return await UserAddresses.query().select(raw(fields)).findById(id);
   }
 
   static async createUserAddress(input) {

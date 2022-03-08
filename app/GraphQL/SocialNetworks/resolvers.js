@@ -1,11 +1,17 @@
+const graphqlFields = require('graphql-fields');
+
 const SocialNetworksRepository = require('../../Repositories/SocialNetworksRepository');
 
-const socialNetworksResolver = async () => {
-  return await SocialNetworksRepository.socialNetworks();
+const socialNetworksResolver = async (info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await SocialNetworksRepository.socialNetworks(fields.join(','));
 };
 
-const getSocialNetworkResolver = async (id) => {
-  return await SocialNetworksRepository.getSocialNetwork(id);
+const getSocialNetworkResolver = async (id, info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await SocialNetworksRepository.getSocialNetwork(id, fields.join(','));
 };
 
 const createSocialNetworkResolver = async (args) => {

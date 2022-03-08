@@ -1,13 +1,23 @@
+const graphqlFields = require('graphql-fields');
+
 const crypto = require('crypto-js');
 
 const DevicesRepository = require('../../Repositories/DevicesRepository');
 
-const devicesResolver = async () => {
-  return await DevicesRepository.devices();
+const devicesResolver = async (info) => {
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['user'] })
+  );
+
+  return await DevicesRepository.devices(fields.join(','));
 };
 
-const getDeviceResolver = async (id) => {
-  return await DevicesRepository.getDevice(id);
+const getDeviceResolver = async (id, info) => {
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['user'] })
+  );
+
+  return await DevicesRepository.getDevice(id, fields.join(','));
 };
 
 const createDeviceResolver = async (args) => {

@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const UserRoles = require('../Models/UserRoles');
 
 class UserRolesRepository {
-  static async userRoles() {
-    return await UserRoles.query();
+  static async userRoles(fields) {
+    return await UserRoles.query().select(raw(fields));
   }
 
-  static async getUserRole(id) {
-    return await UserRoles.query().findById(id);
+  static async getUserRole(id, fields) {
+    return await UserRoles.query().select(raw(fields)).findById(id);
   }
 
   static async createUserRole(input) {

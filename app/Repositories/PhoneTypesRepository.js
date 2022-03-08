@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const PhoneTypes = require('../Models/PhoneTypes');
 
 class PhoneTypesRepository {
-  static async phoneTypes() {
-    return await PhoneTypes.query();
+  static async phoneTypes(fields) {
+    return await PhoneTypes.query().select(raw(fields));
   }
 
-  static async getPhoneType(id) {
-    return await PhoneTypes.query().findById(id);
+  static async getPhoneType(id, fields) {
+    return await PhoneTypes.query().select(raw(fields)).findById(id);
   }
 
   static async getPhoneTypes(ids) {

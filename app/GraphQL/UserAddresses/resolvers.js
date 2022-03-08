@@ -1,11 +1,21 @@
+const graphqlFields = require('graphql-fields');
+
 const UserAddressesRepository = require('../../Repositories/UserAddressesRepository');
 
-const userAddressesResolver = async () => {
-  return await UserAddressesRepository.userAddresses();
+const userAddressesResolver = async (info) => {
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['user', 'address_type'] })
+  );
+
+  return await UserAddressesRepository.userAddresses(fields.join(','));
 };
 
-const getUserAddressResolver = async (id) => {
-  return await UserAddressesRepository.getUserAddress(id);
+const getUserAddressResolver = async (id, info) => {
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['user', 'address_type'] })
+  );
+
+  return await UserAddressesRepository.getUserAddress(id, fields.join(','));
 };
 
 const createUserAddressResolver = async (args) => {

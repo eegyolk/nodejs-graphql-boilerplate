@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const EmailTypes = require('../Models/EmailTypes');
 
 class EmailTypesRepository {
-  static async emailTypes() {
-    return await EmailTypes.query();
+  static async emailTypes(fields) {
+    return await EmailTypes.query().select(raw(fields));
   }
 
-  static async getEmailType(id) {
-    return await EmailTypes.query().findById(id);
+  static async getEmailType(id, fields) {
+    return await EmailTypes.query().select(raw(fields)).findById(id);
   }
 
   static async getEmailTypes(ids) {

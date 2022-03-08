@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const Roles = require('../Models/Roles');
 
 class RolesRepository {
-  static async roles() {
-    return await Roles.query();
+  static async roles(fields) {
+    return await Roles.query().select(raw(fields));
   }
 
-  static async getRole(id) {
-    return await Roles.query().findById(id);
+  static async getRole(id, fields) {
+    return await Roles.query().select(raw(fields)).findById(id);
   }
 
   static async getRoles(ids) {

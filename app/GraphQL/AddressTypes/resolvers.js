@@ -1,11 +1,17 @@
+const graphqlFields = require('graphql-fields');
+
 const AddressTypesRepository = require('../../Repositories/AddressTypesRepository');
 
-const addressTypesResolver = async () => {
-  return await AddressTypesRepository.addressTypes();
+const addressTypesResolver = async (info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await AddressTypesRepository.addressTypes(fields.join(','));
 };
 
-const getAddressTypeResolver = async (id) => {
-  return await AddressTypesRepository.getAddressType(id);
+const getAddressTypeResolver = async (id, info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await AddressTypesRepository.getAddressType(id, fields.join(','));
 };
 
 const createAddressTypeResolver = async (args) => {

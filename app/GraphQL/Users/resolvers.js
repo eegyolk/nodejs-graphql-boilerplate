@@ -1,12 +1,18 @@
+const graphqlFields = require('graphql-fields');
+
 const PasswordHasher = require('../../Classes/PasswordHasher');
 const UsersRepository = require('../../Repositories/UsersRepository');
 
-const usersResolver = async () => {
-  return await UsersRepository.users();
+const usersResolver = async (info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await UsersRepository.users(fields.join(','));
 };
 
-const getUserResolver = async (id) => {
-  return await UsersRepository.getUser(id);
+const getUserResolver = async (id, info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await UsersRepository.getUser(id, fields.join(','));
 };
 
 const createUserResolver = async (args) => {

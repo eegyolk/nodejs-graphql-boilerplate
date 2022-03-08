@@ -1,11 +1,17 @@
+const graphqlFields = require('graphql-fields');
+
 const PersonasRepository = require('../../Repositories/PersonasRepository');
 
-const personasResolver = async () => {
-  return await PersonasRepository.personas();
+const personasResolver = async (info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await PersonasRepository.personas(fields.join(','));
 };
 
-const getPersonaResolver = async (id) => {
-  return await PersonasRepository.getPersona(id);
+const getPersonaResolver = async (id, info) => {
+  const fields = Object.keys(graphqlFields(info));
+
+  return await PersonasRepository.getPersona(id, fields.join(','));
 };
 
 const createPersonaResolver = async (args) => {

@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const AppModules = require('../Models/AppModules');
 
 class AppModulesRepository {
-  static async appModules() {
-    return await AppModules.query();
+  static async appModules(fields) {
+    return await AppModules.query().select(raw(fields));
   }
 
-  static async getAppModule(id) {
-    return await AppModules.query().findById(id);
+  static async getAppModule(id, fields) {
+    return await AppModules.query().select(raw(fields)).findById(id);
   }
 
   static async getAppModules(ids) {

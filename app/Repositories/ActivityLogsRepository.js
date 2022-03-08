@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const ActivityLogs = require('../Models/ActivityLogs');
 
 class ActivityLogsRepository {
-  static async activityLogs() {
-    return await ActivityLogs.query();
+  static async activityLogs(fields) {
+    return await ActivityLogs.query().select(raw(fields));
   }
 
-  static async getActivityLog(id) {
-    return await ActivityLogs.query().findById(id);
+  static async getActivityLog(id, fields) {
+    return await ActivityLogs.query().select(raw(fields)).findById(id);
   }
 
   static async createActivityLog(input) {

@@ -1,12 +1,16 @@
+const { raw } = require('objection');
+
 const RoleAppModulePermissions = require('../Models/RoleAppModulePermissions');
 
 class RoleAppModulePermissionsRepository {
-  static async roleAppModulePermissions() {
-    return await RoleAppModulePermissions.query();
+  static async roleAppModulePermissions(fields) {
+    return await RoleAppModulePermissions.query().select(raw(fields));
   }
 
-  static async getRoleAppModulePermission(id) {
-    return await RoleAppModulePermissions.query().findById(id);
+  static async getRoleAppModulePermission(id, fields) {
+    return await RoleAppModulePermissions.query()
+      .select(raw(fields))
+      .findById(id);
   }
 
   static async createRoleAppModulePermission(input) {

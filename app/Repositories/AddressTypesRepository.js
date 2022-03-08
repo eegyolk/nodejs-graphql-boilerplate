@@ -1,12 +1,14 @@
+const { raw } = require('objection');
+
 const AddressTypes = require('../Models/AddressTypes');
 
 class AddressTypesRepository {
-  static async addressTypes() {
-    return await AddressTypes.query();
+  static async addressTypes(fields) {
+    return await AddressTypes.query().select(raw(fields));
   }
 
-  static async getAddressType(id) {
-    return await AddressTypes.query().findById(id);
+  static async getAddressType(id, fields) {
+    return await AddressTypes.query().select(raw(fields)).findById(id);
   }
 
   static async getAddressTypes(ids) {
