@@ -14,7 +14,7 @@ class UserEmailsRepository {
   static async createUserEmail(input) {
     const { user_id, email_type_id, email_address, is_default, rank } = input;
 
-    return await UserAddresses.query().insert({
+    return await UserEmails.query().insert({
       user_id,
       email_type_id,
       email_address,
