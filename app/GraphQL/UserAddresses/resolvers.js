@@ -18,6 +18,12 @@ const getUserAddressResolver = async (id, info) => {
   return await UserAddressesRepository.getUserAddress(id, fields.join(','));
 };
 
+const getUserAddressIdByUserIdResolver = async (userId) => {
+  const result = await UserAddressesRepository.getUserAddressIdByUserId(userId);
+
+  return result.map((item) => item.id);
+};
+
 const createUserAddressResolver = async (args) => {
   return await UserAddressesRepository.createUserAddress(args.input);
 };
@@ -25,5 +31,6 @@ const createUserAddressResolver = async (args) => {
 module.exports = {
   userAddressesResolver,
   getUserAddressResolver,
+  getUserAddressIdByUserIdResolver,
   createUserAddressResolver,
 };

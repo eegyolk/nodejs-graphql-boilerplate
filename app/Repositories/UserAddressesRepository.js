@@ -11,6 +11,10 @@ class UserAddressesRepository {
     return await UserAddresses.query().select(raw(fields)).findById(id);
   }
 
+  static async getUserAddressIdByUserId(userId) {
+    return await UserAddresses.query().select('id').where('user_id', userId);
+  }
+
   static async createUserAddress(input) {
     const {
       user_id,
