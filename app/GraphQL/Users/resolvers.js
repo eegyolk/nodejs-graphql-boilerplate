@@ -4,7 +4,9 @@ const PasswordHasher = require('../../Classes/PasswordHasher');
 const UsersRepository = require('../../Repositories/UsersRepository');
 
 const usersResolver = async (info) => {
-  const fields = Object.keys(graphqlFields(info));
+  const fields = Object.keys(
+    graphqlFields(info, {}, { excludedFields: ['userEmailIds'] })
+  );
 
   return await UsersRepository.users(fields.join(','));
 };

@@ -11,6 +11,10 @@ class UserEmailsRepository {
     return await UserEmails.query().select(raw(fields)).findById(id);
   }
 
+  static async getUserEmailIdByUserId(userId) {
+    return await UserEmails.query().select('id').where('user_id', userId);
+  }
+
   static async createUserEmail(input) {
     const { user_id, email_type_id, email_address, is_default, rank } = input;
 

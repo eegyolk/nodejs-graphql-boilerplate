@@ -3,7 +3,10 @@ const {
   GraphQLNonNull,
   GraphQLString,
   GraphQLInt,
+  GraphQLList,
 } = require('graphql');
+
+const { getUserEmailIdByUserIdResolver } = require('../UserEmails/resolvers');
 
 const usersType = new GraphQLObjectType({
   name: 'Users',
@@ -20,6 +23,10 @@ const usersType = new GraphQLObjectType({
     created_at: { type: new GraphQLNonNull(GraphQLString) },
     updated_at: { type: new GraphQLNonNull(GraphQLString) },
     deleted_at: { type: GraphQLString },
+    userEmailIds: {
+      type: new GraphQLList(GraphQLInt),
+      resolve: (source) => getUserEmailIdByUserIdResolver(source.id),
+    },
   },
 });
 
