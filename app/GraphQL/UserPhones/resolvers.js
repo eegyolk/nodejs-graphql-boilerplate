@@ -18,6 +18,12 @@ const getUserPhoneResolver = async (id, info) => {
   return await UserPhonesRepository.getUserPhone(id, fields.join(','));
 };
 
+const getUserPhoneIdByUserIdResolver = async (userId) => {
+  const result = await UserPhonesRepository.getUserPhoneIdByUserId(userId);
+
+  return result.map((item) => item.id);
+};
+
 const createUserPhoneResolver = async (args) => {
   return await UserPhonesRepository.createUserPhone(args.input);
 };
@@ -25,5 +31,6 @@ const createUserPhoneResolver = async (args) => {
 module.exports = {
   userPhonesResolver,
   getUserPhoneResolver,
+  getUserPhoneIdByUserIdResolver,
   createUserPhoneResolver,
 };

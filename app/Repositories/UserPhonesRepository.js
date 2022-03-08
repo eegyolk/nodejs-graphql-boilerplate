@@ -11,6 +11,10 @@ class UserPhonesRepository {
     return await UserPhones.query().select(raw(fields)).findById(id);
   }
 
+  static async getUserPhoneIdByUserId(userId) {
+    return await UserPhones.query().select('id').where('user_id', userId);
+  }
+
   static async createUserPhone(input) {
     const { user_id, phone_type_id, number, is_default, rank } = input;
 

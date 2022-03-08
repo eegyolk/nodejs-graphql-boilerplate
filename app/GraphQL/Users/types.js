@@ -7,6 +7,7 @@ const {
 } = require('graphql');
 
 const { getUserEmailIdByUserIdResolver } = require('../UserEmails/resolvers');
+const { getUserPhoneIdByUserIdResolver } = require('../UserPhones/resolvers');
 
 const usersType = new GraphQLObjectType({
   name: 'Users',
@@ -26,6 +27,10 @@ const usersType = new GraphQLObjectType({
     userEmailIds: {
       type: new GraphQLList(GraphQLInt),
       resolve: (source) => getUserEmailIdByUserIdResolver(source.id),
+    },
+    userPhoneIds: {
+      type: new GraphQLList(GraphQLInt),
+      resolve: (source) => getUserPhoneIdByUserIdResolver(source.id),
     },
   },
 });

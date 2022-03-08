@@ -5,7 +5,11 @@ const UsersRepository = require('../../Repositories/UsersRepository');
 
 const usersResolver = async (info) => {
   const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['userEmailIds'] })
+    graphqlFields(
+      info,
+      {},
+      { excludedFields: ['userEmailIds', 'userPhoneIds'] }
+    )
   );
 
   return await UsersRepository.users(fields.join(','));
