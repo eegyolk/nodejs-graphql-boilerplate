@@ -88,11 +88,11 @@ const { userRolesType } = require('./UserRoles/types'),
 const { usersType } = require('./Users/types'),
   { usersResolver, getUserResolver } = require('./Users/resolvers');
 
-const { userSocialNetworksType } = require('./UserSocialNetwork/types'),
+const { userSocialNetworksType } = require('./UserSocialNetworks/types'),
   {
     userSocialNetworksResolver,
     getUserSocialNetworkResolver,
-  } = require('./UserSocialNetwork/resolvers');
+  } = require('./UserSocialNetworks/resolvers');
 
 const queries = new GraphQLObjectType({
   name: 'Queries',

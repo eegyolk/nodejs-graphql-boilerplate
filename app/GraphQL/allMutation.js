@@ -72,11 +72,11 @@ const { createUserInputType } = require('./Users/inputTypes'),
 
 const {
     createUserSocialNetworkInputType,
-  } = require('./UserSocialNetwork/inputTypes'),
+  } = require('./UserSocialNetworks/inputTypes'),
   {
     createUserSocialNetworkResolver,
-  } = require('./UserSocialNetwork/resolvers'),
-  { userSocialNetworksType } = require('./UserSocialNetwork/types');
+  } = require('./UserSocialNetworks/resolvers'),
+  { userSocialNetworksType } = require('./UserSocialNetworks/types');
 
 const mutations = new GraphQLObjectType({
   name: 'Mutations',
