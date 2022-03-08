@@ -10,6 +10,7 @@ const usersResolver = async (info) => {
       {},
       {
         excludedFields: [
+          'deviceIds',
           'userAddressIds',
           'userEmailIds',
           'userPersonaIds',

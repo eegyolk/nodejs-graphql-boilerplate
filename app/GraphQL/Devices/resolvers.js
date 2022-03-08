@@ -20,6 +20,12 @@ const getDeviceResolver = async (id, info) => {
   return await DevicesRepository.getDevice(id, fields.join(','));
 };
 
+const getDeviceIdByUserIdResolver = async (userId) => {
+  const result = await DevicesRepository.getDeviceIdByUserId(userId);
+
+  return result.map((item) => item.id);
+};
+
 const createDeviceResolver = async (args) => {
   const { input } = args;
 
@@ -31,5 +37,6 @@ const createDeviceResolver = async (args) => {
 module.exports = {
   devicesResolver,
   getDeviceResolver,
+  getDeviceIdByUserIdResolver,
   createDeviceResolver,
 };

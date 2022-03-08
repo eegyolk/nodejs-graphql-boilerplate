@@ -15,6 +15,10 @@ class DevicesRepository {
     return await Devices.query().select(raw(fields)).whereIn('id', ids);
   }
 
+  static async getDeviceIdByUserId(userId) {
+    return await Devices.query().select('id').where('user_id', userId);
+  }
+
   static async createDevice(input) {
     const { user_id, ip_address, user_agent, user_agent_md5 } = input;
 

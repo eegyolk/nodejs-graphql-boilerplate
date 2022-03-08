@@ -6,6 +6,7 @@ const {
   GraphQLList,
 } = require('graphql');
 
+const { getDeviceIdByUserIdResolver } = require('../Devices/resolvers');
 const {
   getUserAddressIdByUserIdResolver,
 } = require('../UserAddresses/resolvers');
@@ -34,6 +35,10 @@ const usersType = new GraphQLObjectType({
     created_at: { type: new GraphQLNonNull(GraphQLString) },
     updated_at: { type: new GraphQLNonNull(GraphQLString) },
     deleted_at: { type: GraphQLString },
+    deviceIds: {
+      type: new GraphQLList(GraphQLInt),
+      resolve: (source) => getDeviceIdByUserIdResolver(source.id),
+    },
     userAddressIds: {
       type: new GraphQLList(GraphQLInt),
       resolve: (source) => getUserAddressIdByUserIdResolver(source.id),
