@@ -8,7 +8,14 @@ const usersResolver = async (info) => {
     graphqlFields(
       info,
       {},
-      { excludedFields: ['userAddressIds', 'userEmailIds', 'userPhoneIds'] }
+      {
+        excludedFields: [
+          'userAddressIds',
+          'userEmailIds',
+          'userPhoneIds',
+          'userSocialNetworkIds',
+        ],
+      }
     )
   );
 

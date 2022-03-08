@@ -23,6 +23,12 @@ const getUserSocialNetworkResolver = async (id, info) => {
   );
 };
 
+const getUserSocialNetworkIdByUserIdResolver = async (userId) => {
+  return await UserSocialNetworksRepository.getUserSocialNetworkIdByUserId(
+    userId
+  );
+};
+
 const createUserSocialNetworkResolver = async (args) => {
   return await UserSocialNetworksRepository.createUserSocialNetwork(args.input);
 };
@@ -30,5 +36,6 @@ const createUserSocialNetworkResolver = async (args) => {
 module.exports = {
   userSocialNetworksResolver,
   getUserSocialNetworkResolver,
+  getUserSocialNetworkIdByUserIdResolver,
   createUserSocialNetworkResolver,
 };
