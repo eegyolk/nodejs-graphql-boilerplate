@@ -11,8 +11,8 @@ class SocialNetworksRepository {
     return await SocialNetworks.query().select(raw(fields)).findById(id);
   }
 
-  static async getSocialNetworks(ids) {
-    return await SocialNetworks.query().whereIn('id', ids);
+  static async getSocialNetworks(ids, fields) {
+    return await SocialNetworks.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createSocialNetwork(input) {

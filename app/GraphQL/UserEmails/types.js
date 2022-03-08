@@ -1,3 +1,4 @@
+const graphqlFields = require('graphql-fields');
 const {
   GraphQLObjectType,
   GraphQLNonNull,
@@ -16,14 +17,22 @@ const userEmailsType = new GraphQLObjectType({
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     user: {
       type: new GraphQLNonNull(usersType),
-      resolve: (source, args, { loaders }) =>
-        loaders.users.load(source.user_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
+      },
     },
     email_type_id: { type: new GraphQLNonNull(GraphQLInt) },
     email_type: {
       type: new GraphQLNonNull(emailTypesType),
-      resolve: (source, args, { loaders }) =>
-        loaders.emailTypes.load(source.email_type_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.emailTypes.load(
+          `${source.email_type_id}@${fields.join(',')}`
+        );
+      },
     },
     email_address: { type: new GraphQLNonNull(GraphQLString) },
     is_default: { type: new GraphQLNonNull(GraphQLBoolean) },

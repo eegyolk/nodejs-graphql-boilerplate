@@ -1,7 +1,10 @@
 const PhoneTypesRepository = require('../../Repositories/PhoneTypesRepository');
+const Utilities = require('../../Classes/Utilities');
 
-const getPhoneTypesLoader = async (ids) => {
-  return await PhoneTypesRepository.getPhoneTypes(ids);
+const getPhoneTypesLoader = async (idsAndFields) => {
+  const { ids, fields } = Utilities.extractIdsAndFields(idsAndFields);
+
+  return await PhoneTypesRepository.getPhoneTypes(ids, fields);
 };
 
 module.exports = {

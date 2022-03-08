@@ -11,8 +11,8 @@ class UsersRepository {
     return await Users.query().select(raw(fields)).findById(id);
   }
 
-  static async getUsers(ids) {
-    return await Users.query().whereIn('id', ids);
+  static async getUsers(ids, fields) {
+    return await Users.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createUser(input) {

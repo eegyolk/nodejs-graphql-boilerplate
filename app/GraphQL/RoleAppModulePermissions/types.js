@@ -1,3 +1,4 @@
+const graphqlFields = require('graphql-fields');
 const {
   GraphQLObjectType,
   GraphQLNonNull,
@@ -16,14 +17,22 @@ const roleAppModulePermissionsType = new GraphQLObjectType({
     role_id: { type: new GraphQLNonNull(GraphQLInt) },
     role: {
       type: new GraphQLNonNull(rolesType),
-      resolve: (source, args, { loaders }) =>
-        loaders.roles.load(source.role_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.roles.load(`${source.role_id}@${fields.join(',')}`);
+      },
     },
     app_module_id: { type: new GraphQLNonNull(GraphQLInt) },
     app_module: {
       type: new GraphQLNonNull(appModulesType),
-      resolve: (source, args, { loaders }) =>
-        loaders.appModules.load(source.app_module_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.appModules.load(
+          `${source.app_module_id}@${fields.join(',')}`
+        );
+      },
     },
     can_view: { type: new GraphQLNonNull(GraphQLBoolean) },
     can_create: { type: new GraphQLNonNull(GraphQLBoolean) },

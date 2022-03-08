@@ -11,8 +11,8 @@ class RolesRepository {
     return await Roles.query().select(raw(fields)).findById(id);
   }
 
-  static async getRoles(ids) {
-    return await Roles.query().whereIn('id', ids);
+  static async getRoles(ids, fields) {
+    return await Roles.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createRole(input) {

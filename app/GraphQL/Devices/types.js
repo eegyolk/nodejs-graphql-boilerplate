@@ -1,3 +1,4 @@
+const graphqlFields = require('graphql-fields');
 const {
   GraphQLObjectType,
   GraphQLNonNull,
@@ -14,8 +15,11 @@ const devicesType = new GraphQLObjectType({
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     user: {
       type: new GraphQLNonNull(usersType),
-      resolve: (source, args, { loaders }) =>
-        loaders.users.load(source.user_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
+      },
     },
     ip_address: { type: new GraphQLNonNull(GraphQLString) },
     user_agent: { type: new GraphQLNonNull(GraphQLString) },

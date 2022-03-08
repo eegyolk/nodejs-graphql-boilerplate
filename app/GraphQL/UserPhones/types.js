@@ -1,3 +1,4 @@
+const graphqlFields = require('graphql-fields');
 const {
   GraphQLObjectType,
   GraphQLNonNull,
@@ -16,14 +17,22 @@ const userPhonesType = new GraphQLObjectType({
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     user: {
       type: new GraphQLNonNull(usersType),
-      resolve: (source, args, { loaders }) =>
-        loaders.users.load(source.user_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
+      },
     },
     phone_type_id: { type: new GraphQLNonNull(GraphQLInt) },
     phone_type: {
       type: new GraphQLNonNull(phoneTypesType),
-      resolve: (source, args, { loaders }) =>
-        loaders.phoneTypes.load(source.phone_type_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.phoneTypes.load(
+          `${source.phone_type_id}@${fields.join(',')}`
+        );
+      },
     },
     number: { type: new GraphQLNonNull(GraphQLString) },
     is_default: { type: new GraphQLNonNull(GraphQLBoolean) },

@@ -1,3 +1,4 @@
+const graphqlFields = require('graphql-fields');
 const {
   GraphQLObjectType,
   GraphQLNonNull,
@@ -16,14 +17,22 @@ const userSocialNetworksType = new GraphQLObjectType({
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     user: {
       type: new GraphQLNonNull(usersType),
-      resolve: (source, args, { loaders }) =>
-        loaders.users.load(source.user_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
+      },
     },
     social_network_id: { type: new GraphQLNonNull(GraphQLInt) },
     social_network: {
       type: new GraphQLNonNull(socialNetworksType),
-      resolve: (source, args, { loaders }) =>
-        loaders.socialNetworks.load(source.social_network_id),
+      resolve: (source, args, { loaders }, info) => {
+        const fields = Object.keys(graphqlFields(info));
+
+        return loaders.socialNetworks.load(
+          `${source.social_network_id}@${fields.join(',')}`
+        );
+      },
     },
     url: { type: new GraphQLNonNull(GraphQLString) },
     is_default: { type: new GraphQLNonNull(GraphQLBoolean) },

@@ -11,8 +11,8 @@ class AppModulesRepository {
     return await AppModules.query().select(raw(fields)).findById(id);
   }
 
-  static async getAppModules(ids) {
-    return await AppModules.query().whereIn('id', ids);
+  static async getAppModules(ids, fields) {
+    return await AppModules.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createAppModule(input) {

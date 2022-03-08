@@ -11,8 +11,8 @@ class PhoneTypesRepository {
     return await PhoneTypes.query().select(raw(fields)).findById(id);
   }
 
-  static async getPhoneTypes(ids) {
-    return await PhoneTypes.query().whereIn('id', ids);
+  static async getPhoneTypes(ids, fields) {
+    return await PhoneTypes.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createPhoneType(input) {

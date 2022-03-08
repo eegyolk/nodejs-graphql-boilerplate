@@ -11,8 +11,8 @@ class DevicesRepository {
     return await Devices.query().select(raw(fields)).findById(id);
   }
 
-  static async getDevices(ids) {
-    return await Devices.query().whereIn('id', ids);
+  static async getDevices(ids, fields) {
+    return await Devices.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createDevice(input) {

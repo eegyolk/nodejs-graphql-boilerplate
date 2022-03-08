@@ -11,8 +11,8 @@ class EmailTypesRepository {
     return await EmailTypes.query().select(raw(fields)).findById(id);
   }
 
-  static async getEmailTypes(ids) {
-    return await EmailTypes.query().whereIn('id', ids);
+  static async getEmailTypes(ids, fields) {
+    return await EmailTypes.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createEmailType(input) {

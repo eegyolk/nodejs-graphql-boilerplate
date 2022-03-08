@@ -11,8 +11,8 @@ class PersonasRepository {
     return await Personas.query().select(raw(fields)).findById(id);
   }
 
-  static async getPersonas(ids) {
-    return await Personas.query().whereIn('id', ids);
+  static async getPersonas(ids, fields) {
+    return await Personas.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createPersona(input) {
