@@ -17,7 +17,8 @@ const appConfig = require('../config/app'),
 
 const allLoader = require('../app/GraphQL/allLoader'),
   allMutation = require('../app/GraphQL/allMutation'),
-  allQuery = require('../app/GraphQL/allQuery');
+  allQuery = require('../app/GraphQL/allQuery'),
+  expressPlayground = require('graphql-playground-middleware-express').default;
 
 const webRoutes = require('../routes/web');
 
@@ -71,9 +72,10 @@ module.exports.extendApp = function ({ app }) {
       context: {
         loaders: allLoader,
       },
-      graphiql: true,
+      graphiql: false,
     })
   );
+  app.get('/playground', expressPlayground({ endpoint: '/graphql' }));
 
   // Middleware to setup routes
   app.use(webRoutes);
