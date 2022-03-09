@@ -1,8 +1,14 @@
 require('dotenv').config();
 
+const { ApolloServer } = require('apollo-server-express');
+const {
+  ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} = require('apollo-server-core');
 const cors = require('cors');
-const { graphqlHTTP } = require('express-graphql');
 const { GraphQLSchema } = require('graphql');
+const helmet = require('helmet');
+const http = require('http');
 const { Model } = require('objection');
 const { v4: uuidv4 } = require('uuid');
 
@@ -17,8 +23,7 @@ const appConfig = require('../config/app'),
 
 const allLoader = require('../app/GraphQL/allLoader'),
   allMutation = require('../app/GraphQL/allMutation'),
-  allQuery = require('../app/GraphQL/allQuery'),
-  expressPlayground = require('graphql-playground-middleware-express').default;
+  allQuery = require('../app/GraphQL/allQuery');
 
 const webRoutes = require('../routes/web');
 
@@ -30,14 +35,14 @@ module.exports.config = {
   telegram: telegramConfig,
 };
 
-module.exports.extendApp = function ({ app }) {
+module.exports.setup = function ({ app }) {
   Model.knex(new Database(this.config.database).connect());
 
   app.locals.config = this.config;
 
   // Middleware to setup cors
   // TODO: Add configurations
-  app.use(cors());
+  // app.use(cors(), helmet());
 
   // Midddleware to setup logger
   app.use(function (req, res, next) {
@@ -60,23 +65,34 @@ module.exports.extendApp = function ({ app }) {
     next();
   });
 
-  // Middleware to setup graphql
+  // Middleware to setup routes
+  app.use(webRoutes);
+};
+
+module.exports.startApolloServer = async function ({ app }) {
+  const httpServer = http.createServer(app);
+
   const schema = new GraphQLSchema({
     query: allQuery,
     mutation: allMutation,
   });
-  app.use(
-    '/graphql',
-    graphqlHTTP({
-      schema,
-      context: {
-        loaders: allLoader,
-      },
-      graphiql: false,
-    })
-  );
-  app.get('/playground', expressPlayground({ endpoint: '/graphql' }));
 
-  // Middleware to setup routes
-  app.use(webRoutes);
+  const server = new ApolloServer({
+    schema,
+    context: { loaders: allLoader },
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      ApolloServerPluginLandingPageGraphQLPlayground(),
+    ],
+  });
+
+  await server.start();
+  server.applyMiddleware({ app });
+
+  await new Promise((resolve) =>
+    httpServer.listen({ port: this.config.app.port }, resolve)
+  );
+  console.log(
+    `🚀 Server ready at ${this.config.app.url}:${this.config.app.port}${server.graphqlPath} with process id ${process.pid}`
+  );
 };

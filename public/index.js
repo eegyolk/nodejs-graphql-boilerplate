@@ -8,14 +8,10 @@ config = bootstrapApp.config;
 app.use(compression({ threshold: 0 }));
 app.disable('x-powered-by');
 
-bootstrapApp.extendApp({ app });
+bootstrapApp.setup({ app });
 
 if (config.app.env !== 'test') {
-  app.listen(config.app.port, () => {
-    console.log(
-      `Server listening at port ${config.app.port} with process id ${process.pid}`
-    );
-  });
+  (async () => bootstrapApp.startApolloServer({ app }))();
 } else {
   module.exports = app;
 }
