@@ -6,7 +6,9 @@ const {
   GraphQLInt,
 } = require('graphql');
 
+const devicesExcludedFields = require('../Devices/excludedFields');
 const { devicesType } = require('../Devices/types');
+const usersExcludedFields = require('../Users/excludedFields');
 const { usersType } = require('../Users/types');
 
 const activityLogsType = new GraphQLObjectType({
@@ -17,7 +19,15 @@ const activityLogsType = new GraphQLObjectType({
     user: {
       type: new GraphQLNonNull(usersType),
       resolve: (source, args, { loaders }, info) => {
-        const fields = Object.keys(graphqlFields(info));
+        const fields = Object.keys(
+          graphqlFields(
+            info,
+            {},
+            {
+              excludedFields: usersExcludedFields,
+            }
+          )
+        );
 
         return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
       },
@@ -27,7 +37,7 @@ const activityLogsType = new GraphQLObjectType({
       type: new GraphQLNonNull(devicesType),
       resolve: (source, args, { loaders }, info) => {
         const fields = Object.keys(
-          graphqlFields(info, {}, { excludedFields: ['user'] })
+          graphqlFields(info, {}, { excludedFields: devicesExcludedFields })
         );
 
         return loaders.devices.load(`${source.device_id}@${fields.join(',')}`);

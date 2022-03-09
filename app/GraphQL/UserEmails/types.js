@@ -8,6 +8,7 @@ const {
 } = require('graphql');
 
 const { emailTypesType } = require('../EmailTypes/types');
+const usersExcludedFields = require('../Users/excludedFields');
 const { usersType } = require('../Users/types');
 
 const userEmailsType = new GraphQLObjectType({
@@ -18,7 +19,9 @@ const userEmailsType = new GraphQLObjectType({
     user: {
       type: new GraphQLNonNull(usersType),
       resolve: (source, args, { loaders }, info) => {
-        const fields = Object.keys(graphqlFields(info));
+        const fields = Object.keys(
+          graphqlFields(info, {}, { excludedFields: usersExcludedFields })
+        );
 
         return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
       },

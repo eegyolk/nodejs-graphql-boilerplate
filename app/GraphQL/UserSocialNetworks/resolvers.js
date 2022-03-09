@@ -1,11 +1,10 @@
 const graphqlFields = require('graphql-fields');
 
+const excludedFields = require('./excludedFields');
 const UserSocialNetworksRepository = require('../../Repositories/UserSocialNetworksRepository');
 
 const userSocialNetworksResolver = async (info) => {
-  const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['user', 'social_network'] })
-  );
+  const fields = Object.keys(graphqlFields(info, {}, { excludedFields }));
 
   return await UserSocialNetworksRepository.userSocialNetworks(
     fields.join(',')
@@ -13,9 +12,7 @@ const userSocialNetworksResolver = async (info) => {
 };
 
 const getUserSocialNetworkResolver = async (id, info) => {
-  const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['user', 'social_network'] })
-  );
+  const fields = Object.keys(graphqlFields(info, {}, { excludedFields }));
 
   return await UserSocialNetworksRepository.getUserSocialNetwork(
     id,

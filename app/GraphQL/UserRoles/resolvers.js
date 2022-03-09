@@ -1,19 +1,16 @@
 const graphqlFields = require('graphql-fields');
 
+const excludedFields = require('./excludedFields');
 const UserRolesRepository = require('../../Repositories/UserRolesRepository');
 
 const userRolesResolver = async (info) => {
-  const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['user', 'role'] })
-  );
+  const fields = Object.keys(graphqlFields(info, {}, { excludedFields }));
 
   return await UserRolesRepository.userRoles(fields.join(','));
 };
 
 const getUserRoleResolver = async (id, info) => {
-  const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['user', 'role'] })
-  );
+  const fields = Object.keys(graphqlFields(info, {}, { excludedFields }));
 
   return await UserRolesRepository.getUserRole(id, fields.join(','));
 };

@@ -1,19 +1,16 @@
 const graphqlFields = require('graphql-fields');
 
+const excludedFields = require('./excludedFields');
 const UserEmailsRepository = require('../../Repositories/UserEmailsRepository');
 
 const userEmailsResolver = async (info) => {
-  const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['user', 'email_type'] })
-  );
+  const fields = Object.keys(graphqlFields(info, {}, { excludedFields }));
 
   return await UserEmailsRepository.userEmails(fields.join(','));
 };
 
 const getUserEmailResolver = async (id, info) => {
-  const fields = Object.keys(
-    graphqlFields(info, {}, { excludedFields: ['user', 'email_type'] })
-  );
+  const fields = Object.keys(graphqlFields(info, {}, { excludedFields }));
 
   return await UserEmailsRepository.getUserEmail(id, fields.join(','));
 };

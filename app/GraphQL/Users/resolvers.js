@@ -1,5 +1,6 @@
 const graphqlFields = require('graphql-fields');
 
+const excludedFields = require('./excludedFields');
 const PasswordHasher = require('../../Classes/PasswordHasher');
 const UsersRepository = require('../../Repositories/UsersRepository');
 
@@ -9,15 +10,7 @@ const usersResolver = async (info) => {
       info,
       {},
       {
-        excludedFields: [
-          'deviceIds',
-          'userAddressIds',
-          'userEmailIds',
-          'userPersonaIds',
-          'userPhoneIds',
-          'userRoleIds',
-          'userSocialNetworkIds',
-        ],
+        excludedFields,
       }
     )
   );
@@ -26,7 +19,15 @@ const usersResolver = async (info) => {
 };
 
 const getUserResolver = async (id, info) => {
-  const fields = Object.keys(graphqlFields(info));
+  const fields = Object.keys(
+    graphqlFields(
+      info,
+      {},
+      {
+        excludedFields,
+      }
+    )
+  );
 
   return await UsersRepository.getUser(id, fields.join(','));
 };
