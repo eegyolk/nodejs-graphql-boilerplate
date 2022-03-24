@@ -20,6 +20,14 @@ const { createEmailTypeInputType } = require('./EmailTypes/inputTypes'),
   { createEmailTypeResolver } = require('./EmailTypes/resolvers'),
   { emailTypesType } = require('./EmailTypes/types');
 
+const {
+    createIdentificationTypeInputType,
+  } = require('./IdentificationTypes/inputTypes'),
+  {
+    createIdentificationTypeResolver,
+  } = require('./IdentificationTypes/resolvers'),
+  { identificationTypesType } = require('./IdentificationTypes/types');
+
 const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
   { personasType } = require('./Personas/types');
@@ -119,6 +127,15 @@ const mutations = new GraphQLObjectType({
         input: { type: createEmailTypeInputType },
       },
       resolve: async (source, args) => await createEmailTypeResolver(args),
+    },
+
+    createIdentificationType: {
+      type: identificationTypesType,
+      args: {
+        input: { type: createIdentificationTypeInputType },
+      },
+      resolve: async (source, args) =>
+        await createIdentificationTypeResolver(args),
     },
 
     createPersona: {
