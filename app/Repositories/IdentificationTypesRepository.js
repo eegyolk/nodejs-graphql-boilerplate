@@ -18,13 +18,15 @@ class IdentificationTypesRepository {
   }
 
   static async createIdentificationType(input) {
-    const { code, label, description, is_default } = input;
+    const { code, label, description, is_default, required_images_count } =
+      input;
 
     return await IdentificationTypes.query().insert({
       code,
       label,
       description,
       is_default,
+      required_images_count,
     });
   }
 }
