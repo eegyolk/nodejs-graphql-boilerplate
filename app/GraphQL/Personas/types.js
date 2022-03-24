@@ -4,7 +4,12 @@ const {
   GraphQLInt,
   GraphQLString,
   GraphQLBoolean,
+  GraphQLList,
 } = require('graphql');
+
+const {
+  getPersonaIdentificationTypeIdByPersonaIdResolver,
+} = require('../PersonaIdentificationTypes/resolvers');
 
 const personasType = new GraphQLObjectType({
   name: 'Personas',
@@ -17,6 +22,11 @@ const personasType = new GraphQLObjectType({
     created_at: { type: new GraphQLNonNull(GraphQLString) },
     updated_at: { type: new GraphQLNonNull(GraphQLString) },
     deleted_at: { type: GraphQLString },
+    personaIdentificationTypeIds: {
+      type: new GraphQLList(GraphQLInt),
+      resolve: (source) =>
+        getPersonaIdentificationTypeIdByPersonaIdResolver(source.id),
+    },
   },
 });
 
