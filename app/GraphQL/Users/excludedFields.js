@@ -2,6 +2,7 @@ const excludedFields = [
   'deviceIds',
   'userAddressIds',
   'userEmailIds',
+  'userIdentificationIds',
   'userPersonaIds',
   'userPhoneIds',
   'userRoleIds',
