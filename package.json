@@ -15,6 +15,7 @@
   },
   "scripts": {
     "create:bundle": "./node_modules/.bin/webpack --config webpack.config.js",
+    "generate-secret-key": "node toolkit/generate-secret-key.js",
     "migration:make": "node -r dotenv/config ./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js migrate:make",
     "seed:make": "node -r dotenv/config ./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js seed:make",
     "migrate:seed:mysql:dev": "node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-mysql.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-mysql.js seed:run",
