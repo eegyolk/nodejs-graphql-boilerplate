@@ -8,6 +8,7 @@ const {
 } = require('graphql');
 
 const { identificationTypesType } = require('../IdentificationTypes/types');
+const personansExcludedFields = require('../Personas/excludedFields');
 const { personasType } = require('../Personas/types');
 
 const personaIdentificationTypesType = new GraphQLObjectType({
@@ -18,7 +19,9 @@ const personaIdentificationTypesType = new GraphQLObjectType({
     persona: {
       type: new GraphQLNonNull(personasType),
       resolve: (source, args, { loaders }, info) => {
-        const fields = Object.keys(graphqlFields(info));
+        const fields = Object.keys(
+          graphqlFields(info, {}, { excludedFields: personansExcludedFields })
+        );
 
         return loaders.personas.load(
           `${source.persona_id}@${fields.join(',')}`

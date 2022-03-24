@@ -7,6 +7,7 @@ const {
   GraphQLBoolean,
 } = require('graphql');
 
+const personansExcludedFields = require('../Personas/excludedFields');
 const { personasType } = require('../Personas/types');
 const usersExcludedFields = require('../Users/excludedFields');
 const { usersType } = require('../Users/types');
@@ -30,7 +31,9 @@ const userPersonasType = new GraphQLObjectType({
     persona: {
       type: new GraphQLNonNull(personasType),
       resolve: (source, args, { loaders }, info) => {
-        const fields = Object.keys(graphqlFields(info));
+        const fields = Object.keys(
+          graphqlFields(info, {}, { excludedFields: personansExcludedFields })
+        );
 
         return loaders.personas.load(
           `${source.persona_id}@${fields.join(',')}`
