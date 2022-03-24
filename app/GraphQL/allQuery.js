@@ -84,6 +84,12 @@ const { userEmailsType } = require('./UserEmails/types'),
     getUserEmailResolver,
   } = require('./UserEmails/resolvers');
 
+const { userIdentificationsType } = require('./UserIdentifications/types'),
+  {
+    userIdentificationsResolver,
+    getUserIdentificationResolver,
+  } = require('./UserIdentifications/resolvers');
+
 const { userPersonasType } = require('./UserPersonas/types'),
   {
     userPersonasResolver,
@@ -304,6 +310,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getUserEmailResolver(args.id, info),
+    },
+
+    userIdentifications: {
+      type: new GraphQLList(userIdentificationsType),
+      resolve: async (source, args, context, info) =>
+        await userIdentificationsResolver(info),
+    },
+    getUserIdentification: {
+      type: userIdentificationsType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getUserIdentificationResolver(args.id, info),
     },
 
     userPersonas: {
