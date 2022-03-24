@@ -1,4 +1,7 @@
 const { GraphQLObjectType } = require('graphql');
+const {
+  personaIdentificationTypes,
+} = require('../Repositories/PersonaIdentificationTypesRepository');
 
 const { createActivityLogInputType } = require('./ActivityLogs/inputTypes'),
   { createActivityLogResolver } = require('./ActivityLogs/resolvers'),
@@ -27,6 +30,16 @@ const {
     createIdentificationTypeResolver,
   } = require('./IdentificationTypes/resolvers'),
   { identificationTypesType } = require('./IdentificationTypes/types');
+
+const {
+    createPersonaIdentificationTypeInputType,
+  } = require('./PersonaIdentificationTypes/inputTypes'),
+  {
+    createPersonaIdentificationTypeResolver,
+  } = require('./PersonaIdentificationTypes/resolvers'),
+  {
+    personaIdentificationTypesType,
+  } = require('./PersonaIdentificationTypes/types');
 
 const { createPersonaInputType } = require('./Personas/inputTypes'),
   { createPersonaResolver } = require('./Personas/resolvers'),
@@ -136,6 +149,15 @@ const mutations = new GraphQLObjectType({
       },
       resolve: async (source, args) =>
         await createIdentificationTypeResolver(args),
+    },
+
+    createPersonaIdentificationType: {
+      type: personaIdentificationTypesType,
+      args: {
+        input: { type: createPersonaIdentificationTypeInputType },
+      },
+      resolve: async (source, args) =>
+        await createPersonaIdentificationTypeResolver(args),
     },
 
     createPersona: {
