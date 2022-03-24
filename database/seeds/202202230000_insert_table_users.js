@@ -1,24 +1,25 @@
 const { faker } = require('@faker-js/faker');
 
+const PasswordHasher = require('../../app/Classes/PasswordHasher');
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
+  const DEFAULT_PASSWORD = 'password';
+
   // Deletes ALL existing entries
   await knex('users').del();
-  await knex('users').insert([
-    {
-      name: faker.name.findName(),
-      email_address: faker.internet.email(),
-      username: faker.internet.userName(),
-      password: faker.internet.password(),
-    },
-    {
-      name: faker.name.findName(),
-      email_address: faker.internet.email(),
-      username: faker.internet.userName(),
-      password: faker.internet.password(),
-    },
-  ]);
+  for (let i = 0; i <= 4; i++) {
+    await knex('users').insert([
+      {
+        username: faker.internet.userName(),
+        email_address: faker.internet.email(),
+        password: PasswordHasher.make(DEFAULT_PASSWORD),
+        firstname: faker.name.firstName(i % 2),
+        lastname: faker.name.lastName(i % 2),
+      },
+    ]);
+  }
 };
