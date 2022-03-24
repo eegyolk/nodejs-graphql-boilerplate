@@ -7,20 +7,30 @@ exports.up = function (knex) {
 
   return knex.schema.createTable('users', function (table) {
     table.increments('id').primary();
-    table.string('name', 250).notNullable();
-    table
-      .string('email_address', 250)
-      .unique({ indexName: 'uniq_users_email_address' })
-      .notNullable();
     table
       .string('username', 100)
       .unique({ indexName: 'uniq_users_username' })
       .notNullable();
+    table
+      .string('email_address', 320)
+      .unique({ indexName: 'uniq_users_email_address' })
+      .notNullable();
     table.string('password', 100).notNullable();
-    table.string('image_url', 1000).defaultTo('');
+    table.enum('title', ['', 'Mr', 'Mrs', 'Ms']).defaultTo('');
+    table.string('firstname', 250).notNullable();
+    table.string('middlename', 250).defaultTo('');
+    table.string('lastname', 250).notNullable();
+    table.string('suffix', 20).defaultTo('');
+    table.date('birthdate').nullable();
+    table.tinyint('age', 3).defaultTo(0);
+    table.enum('sex', ['', 'MALE', 'FEMALE']).defaultTo('');
+    table.string('photo_url', 1000).defaultTo('');
+    table.string('verification_token', 100).defaultTo('');
+    table.string('verification_md5', 32).index().defaultTo('');
+    table.timestamp('verified_at').nullable();
     table.string('remember_token', 100).defaultTo('');
-    table.string('verification_token', 32).defaultTo('');
-    table.string('recovery_token', 32).defaultTo('');
+    table.string('recovery_token', 100).defaultTo('');
+    table.string('recovery_md5', 32).index().defaultTo('');
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
