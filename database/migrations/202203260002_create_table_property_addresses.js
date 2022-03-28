@@ -22,9 +22,9 @@ exports.up = function (knex) {
     table.timestamp('deleted_at').nullable();
 
     table
-      .foreign('property_type_id', 'idx_property_addresses_property_type_id')
+      .foreign('property_id', 'idx_property_addresses_property_id')
       .references('id')
-      .inTable('property_types');
+      .inTable('properties');
 
     if (client === 'mysql') {
       table.engine('InnoDB');
