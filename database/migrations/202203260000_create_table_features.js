@@ -14,7 +14,6 @@ exports.up = function (knex) {
     table.string('label', 100).notNullable();
     table.string('description', 250).defaultTo('');
     table.boolean('with_value').defaultTo(false);
-    table.string('icon_url', 1000).defaultTo('');
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
