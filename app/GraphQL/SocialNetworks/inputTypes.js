@@ -12,7 +12,6 @@ const createSocialNetworkInputType = new GraphQLInputObjectType({
     label: { type: new GraphQLNonNull(GraphQLString) },
     description: { type: new GraphQLNonNull(GraphQLString) },
     is_default: { type: new GraphQLNonNull(GraphQLBoolean) },
-    logo_url: { type: new GraphQLNonNull(GraphQLString) },
   },
 });
 

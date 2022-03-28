@@ -16,14 +16,13 @@ class SocialNetworksRepository {
   }
 
   static async createSocialNetwork(input) {
-    const { code, label, description, is_default, logo_url } = input;
+    const { code, label, description, is_default } = input;
 
     return await SocialNetworks.query().insert({
       code,
       label,
       description,
       is_default,
-      logo_url,
     });
   }
 }
