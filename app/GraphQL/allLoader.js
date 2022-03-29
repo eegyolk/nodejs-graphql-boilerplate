@@ -5,6 +5,7 @@ const { getAmenitiesLoader } = require('./Amenities/loaders');
 const { getAppModulesLoader } = require('./AppModules/loaders');
 const { getDevicesLoader } = require('./Devices/loaders');
 const { getEmailTypesLoader } = require('./EmailTypes/loaders');
+const { getFeaturesLoader } = require('./Features/loaders');
 const {
   getIdentificationTypesLoader,
 } = require('./IdentificationTypes/loaders');
@@ -20,6 +21,7 @@ const loaders = {
   appModules: new DataLoader(getAppModulesLoader),
   devices: new DataLoader(getDevicesLoader),
   emailTypes: new DataLoader(getEmailTypesLoader),
+  features: new DataLoader(getFeaturesLoader),
   identificationTypes: new DataLoader(getIdentificationTypesLoader),
   personas: new DataLoader(getPersonasLoader),
   phoneTypes: new DataLoader(getPhoneTypesLoader),
