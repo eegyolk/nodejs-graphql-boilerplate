@@ -43,6 +43,16 @@ const {
   } = require('./IdentificationTypes/resolvers'),
   { identificationTypesType } = require('./IdentificationTypes/types');
 
+const { createLeaseDurationInputType } = require('./LeaseDurations/inputTypes'),
+  { createLeaseDurationResolver } = require('./LeaseDurations/resolvers'),
+  { leaseDurationsType } = require('./LeaseDurations/types');
+
+const {
+    createPaymentProviderInputType,
+  } = require('./PaymentProviders/inputTypes'),
+  { createPaymentProviderResolver } = require('./PaymentProviders/resolvers'),
+  { paymentProvidersType } = require('./PaymentProviders/types');
+
 const {
     createPersonaIdentificationTypeInputType,
   } = require('./PersonaIdentificationTypes/inputTypes'),
@@ -68,6 +78,10 @@ const { createPriceDurationInputType } = require('./PriceDurations/inputTypes'),
 const { createPriceSchemeInputType } = require('./PriceSchemes/inputTypes'),
   { createPriceSchemeResolver } = require('./PriceSchemes/resolvers'),
   { priceSchemesType } = require('./PriceSchemes/types');
+
+const { createPropertyTypeInputType } = require('./PropertyTypes/inputTypes'),
+  { createPropertyTypeResolver } = require('./PropertyTypes/resolvers'),
+  { propertyTypesType } = require('./PropertyTypes/types');
 
 const {
     createRoleAppModulePermissionInputType,
@@ -102,16 +116,6 @@ const {
     createUserIdentificationResolver,
   } = require('./UserIdentifications/resolvers'),
   { userIdentificationsType } = require('./UserIdentifications/types');
-
-const { createLeaseDurationInputType } = require('./LeaseDurations/inputTypes'),
-  { createLeaseDurationResolver } = require('./LeaseDurations/resolvers'),
-  { leaseDurationsType } = require('./LeaseDurations/types');
-
-const {
-    createPaymentProviderInputType,
-  } = require('./PaymentProviders/inputTypes'),
-  { createPaymentProviderResolver } = require('./PaymentProviders/resolvers'),
-  { paymentProvidersType } = require('./PaymentProviders/types');
 
 const { createUserPersonaInputType } = require('./UserPersonas/inputTypes'),
   { createUserPersonaResolver } = require('./UserPersonas/resolvers'),
@@ -269,6 +273,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createPriceSchemeInputType },
       },
       resolve: async (source, args) => await createPriceSchemeResolver(args),
+    },
+
+    createPropertyType: {
+      type: propertyTypesType,
+      args: {
+        input: { type: createPropertyTypeInputType },
+      },
+      resolve: async (source, args) => await createPropertyTypeResolver(args),
     },
 
     createRoleAppModulePermission: {
