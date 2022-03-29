@@ -57,6 +57,12 @@ const { leaseDurationsType } = require('./LeaseDurations/types'),
     getLeaseDurationResolver,
   } = require('./LeaseDurations/resolvers');
 
+const { paymentProvidersType } = require('./PaymentProviders/types'),
+  {
+    paymentProvidersResolver,
+    getPaymentProviderResolver,
+  } = require('./PaymentProviders/resolvers');
+
 const {
     personaIdentificationTypesType,
   } = require('./PersonaIdentificationTypes/types'),
@@ -274,6 +280,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getLeaseDurationResolver(args.id, info),
+    },
+
+    paymentProviders: {
+      type: new GraphQLList(paymentProvidersType),
+      resolve: async (source, args, context, info) =>
+        await paymentProvidersResolver(info),
+    },
+    getPaymentProvider: {
+      type: paymentProvidersType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getPaymentProviderResolver(args.id, info),
     },
 
     personaIdentificationTypes: {

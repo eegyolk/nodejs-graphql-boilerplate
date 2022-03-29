@@ -11,6 +11,7 @@ const {
   getIdentificationTypesLoader,
 } = require('./IdentificationTypes/loaders');
 const { getLeaseDurationsLoader } = require('./LeaseDurations/loaders');
+const { getPaymentProvidersLoader } = require('./PaymentProviders/loaders');
 const { getPersonasLoader } = require('./Personas/loaders');
 const { getPhoneTypesLoader } = require('./PhoneTypes/loaders');
 const { getRolesLoader } = require('./Roles/loaders');
@@ -27,6 +28,7 @@ const loaders = {
   houseRules: new DataLoader(getHouseRulesLoader),
   identificationTypes: new DataLoader(getIdentificationTypesLoader),
   leaseDurations: new DataLoader(getLeaseDurationsLoader),
+  paymentProviders: new DataLoader(getPaymentProvidersLoader),
   personas: new DataLoader(getPersonasLoader),
   phoneTypes: new DataLoader(getPhoneTypesLoader),
   roles: new DataLoader(getRolesLoader),
