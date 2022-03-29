@@ -11,8 +11,8 @@ class AddressTypesRepository {
     return await AddressTypes.query().select(raw(fields)).findById(id);
   }
 
-  static async getAddressTypes(ids) {
-    return await AddressTypes.query().whereIn('id', ids);
+  static async getAddressTypes(ids, fields) {
+    return await AddressTypes.query().select(raw(fields)).whereIn('id', ids);
   }
 
   static async createAddressType(input) {
