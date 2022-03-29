@@ -13,12 +13,6 @@ class PriceSchemeDurationLogsRepository {
       .findById(id);
   }
 
-  static async getPriceSchemeDurationLog(ids, fields) {
-    return await PriceSchemeDurationLogs.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPriceSchemeDurationLog(input) {
     const { price_scheme_duration_id, old_data, new_data, remarks } = input;
 

@@ -11,12 +11,6 @@ class PropertyUtilitiesRepository {
     return await PropertyUtilities.query().select(raw(fields)).findById(id);
   }
 
-  static async getPropertyUtilities(ids, fields) {
-    return await PropertyUtilities.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPropertyUtility(input) {
     const { property_id, utility_id, fee } = input;
 

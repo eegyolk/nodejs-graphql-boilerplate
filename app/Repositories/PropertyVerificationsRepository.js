@@ -11,12 +11,6 @@ class PropertyVerificationsRepository {
     return await PropertyVerifications.query().select(raw(fields)).findById(id);
   }
 
-  static async getPropertyVerifications(ids, fields) {
-    return await PropertyVerifications.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPropertyVerification(input) {
     const { property_id, remarks, notes } = input;
 

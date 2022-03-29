@@ -13,12 +13,6 @@ class SubscriptionConsumablesRepository {
       .findById(id);
   }
 
-  static async getSubscriptionConsumables(ids, fields) {
-    return await SubscriptionConsumables.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createSubscriptionConsumable(input) {
     const {
       subscription_id,

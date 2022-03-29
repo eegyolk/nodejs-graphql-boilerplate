@@ -11,12 +11,6 @@ class PropertyMediaFilesRepository {
     return await PropertyMediaFiles.query().select(raw(fields)).findById(id);
   }
 
-  static async getPropertyMediaFiles(ids, fields) {
-    return await PropertyMediaFiles.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPropertyMediaFile(input) {
     const { property_id, images_url, videos_url } = input;
 

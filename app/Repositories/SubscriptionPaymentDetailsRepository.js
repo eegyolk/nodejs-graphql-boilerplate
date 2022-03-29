@@ -13,12 +13,6 @@ class SubscriptionPaymentDetailsRepository {
       .findById(id);
   }
 
-  static async getSubscriptionPaymentDetails(ids, fields) {
-    return await SubscriptionPaymentDetails.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createSubscriptionPaymentDetail(input) {
     const { subscription_id, data, attachment_url } = input;
 

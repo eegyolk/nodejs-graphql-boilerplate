@@ -11,12 +11,6 @@ class PropertyAmenitiesRepository {
     return await PropertyAmenities.query().select(raw(fields)).findById(id);
   }
 
-  static async getPropertyAmenities(ids, fields) {
-    return await PropertyAmenities.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPropertyAmenity(input) {
     const { property_id, amenity_id } = input;
 

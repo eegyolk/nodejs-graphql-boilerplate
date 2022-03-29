@@ -11,12 +11,6 @@ class PropertyHouseRulesRepository {
     return await PropertyHouseRules.query().select(raw(fields)).findById(id);
   }
 
-  static async getPropertyHouseRules(ids, fields) {
-    return await PropertyHouseRules.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPropertyHouseRule(input) {
     const { property_id, house_rule_id } = input;
 

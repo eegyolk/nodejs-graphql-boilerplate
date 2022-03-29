@@ -11,12 +11,6 @@ class PropertyAddressesRepository {
     return await PropertyAddresses.query().select(raw(fields)).findById(id);
   }
 
-  static async getPropertyAddresses(ids, fields) {
-    return await PropertyAddresses.query()
-      .select(raw(fields))
-      .whereIn('id', ids);
-  }
-
   static async createPropertyAddress(input) {
     const {
       property_id,
