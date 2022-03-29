@@ -21,6 +21,7 @@ const { getRolesLoader } = require('./Roles/loaders');
 const { getSocialNetworksLoader } = require('./SocialNetworks/loaders');
 const { getUnitTypesLoader } = require('./UnitTypes/loaders');
 const { getUsersLoader } = require('./Users/loaders');
+const { getUtilitiesLoader } = require('./Utilities/loaders');
 
 const loaders = {
   addressTypes: new DataLoader(getAddressTypesLoader),
@@ -42,6 +43,7 @@ const loaders = {
   socialNetworks: new DataLoader(getSocialNetworksLoader),
   unitTypes: new DataLoader(getUnitTypesLoader),
   users: new DataLoader(getUsersLoader),
+  utilities: new DataLoader(getUtilitiesLoader),
 };
 
 module.exports = loaders;

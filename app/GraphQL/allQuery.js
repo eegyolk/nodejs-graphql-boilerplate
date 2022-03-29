@@ -160,6 +160,9 @@ const { userSocialNetworksType } = require('./UserSocialNetworks/types'),
     getUserSocialNetworkResolver,
   } = require('./UserSocialNetworks/resolvers');
 
+const { utilitiesType } = require('./Utilities/types'),
+  { utilitiesResolver, getUtilityResolver } = require('./Utilities/resolvers');
+
 const queries = new GraphQLObjectType({
   name: 'Queries',
   fields: {
@@ -565,6 +568,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getUserSocialNetworkResolver(args.id, info),
+    },
+
+    utilities: {
+      type: new GraphQLList(utilitiesType),
+      resolve: async (source, args, context, info) =>
+        await utilitiesResolver(info),
+    },
+    getUtility: {
+      type: utilitiesType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getUtilityResolver(args.id, info),
     },
   },
 });
