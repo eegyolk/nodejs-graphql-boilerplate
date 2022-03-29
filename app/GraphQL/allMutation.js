@@ -95,6 +95,10 @@ const {
   } = require('./UserIdentifications/resolvers'),
   { userIdentificationsType } = require('./UserIdentifications/types');
 
+const { createLeaseDurationInputType } = require('./LeaseDurations/inputTypes'),
+  { createLeaseDurationResolver } = require('./LeaseDurations/resolvers'),
+  { leaseDurationsType } = require('./LeaseDurations/types');
+
 const { createUserPersonaInputType } = require('./UserPersonas/inputTypes'),
   { createUserPersonaResolver } = require('./UserPersonas/resolvers'),
   { userPersonasType } = require('./UserPersonas/types');
@@ -193,6 +197,14 @@ const mutations = new GraphQLObjectType({
       },
       resolve: async (source, args) =>
         await createIdentificationTypeResolver(args),
+    },
+
+    createLeaseDuration: {
+      type: leaseDurationsType,
+      args: {
+        input: { type: createLeaseDurationInputType },
+      },
+      resolve: async (source, args) => await createLeaseDurationResolver(args),
     },
 
     createPersonaIdentificationType: {
