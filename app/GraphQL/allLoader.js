@@ -15,6 +15,7 @@ const { getPaymentProvidersLoader } = require('./PaymentProviders/loaders');
 const { getPersonasLoader } = require('./Personas/loaders');
 const { getPhoneTypesLoader } = require('./PhoneTypes/loaders');
 const { getPriceDurationsLoader } = require('./PriceDurations/loaders');
+const { getPriceSchemesLoader } = require('./PriceSchemes/loaders');
 const { getRolesLoader } = require('./Roles/loaders');
 const { getSocialNetworksLoader } = require('./SocialNetworks/loaders');
 const { getUsersLoader } = require('./Users/loaders');
@@ -33,6 +34,7 @@ const loaders = {
   personas: new DataLoader(getPersonasLoader),
   phoneTypes: new DataLoader(getPhoneTypesLoader),
   priceDurations: new DataLoader(getPriceDurationsLoader),
+  priceSchemes: new DataLoader(getPriceSchemesLoader),
   roles: new DataLoader(getRolesLoader),
   socialNetworks: new DataLoader(getSocialNetworksLoader),
   users: new DataLoader(getUsersLoader),

@@ -65,6 +65,10 @@ const { createPriceDurationInputType } = require('./PriceDurations/inputTypes'),
   { createPriceDurationResolver } = require('./PriceDurations/resolvers'),
   { priceDurationsType } = require('./PriceDurations/types');
 
+const { createPriceSchemeInputType } = require('./PriceSchemes/inputTypes'),
+  { createPriceSchemeResolver } = require('./PriceSchemes/resolvers'),
+  { priceSchemesType } = require('./PriceSchemes/types');
+
 const {
     createRoleAppModulePermissionInputType,
   } = require('./RoleAppModulePermissions/inputTypes'),
@@ -257,6 +261,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createPriceDurationInputType },
       },
       resolve: async (source, args) => await createPriceDurationResolver(args),
+    },
+
+    createPriceScheme: {
+      type: priceSchemesType,
+      args: {
+        input: { type: createPriceSchemeInputType },
+      },
+      resolve: async (source, args) => await createPriceSchemeResolver(args),
     },
 
     createRoleAppModulePermission: {

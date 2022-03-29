@@ -86,6 +86,12 @@ const { priceDurationsType } = require('./PriceDurations/types'),
     getPriceDurationResolver,
   } = require('./PriceDurations/resolvers');
 
+const { priceSchemesType } = require('./PriceSchemes/types'),
+  {
+    priceSchemesResolver,
+    getPriceSchemeResolver,
+  } = require('./PriceSchemes/resolvers');
+
 const {
     roleAppModulePermissionsType,
   } = require('./RoleAppModulePermissions/types'),
@@ -356,6 +362,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getPriceDurationResolver(args.id, info),
+    },
+
+    priceSchemes: {
+      type: new GraphQLList(priceSchemesType),
+      resolve: async (source, args, context, info) =>
+        await priceSchemesResolver(info),
+    },
+    getPriceScheme: {
+      type: priceSchemesType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getPriceSchemeResolver(args.id, info),
     },
 
     roleAppModulePermissions: {
