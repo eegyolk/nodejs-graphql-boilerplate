@@ -80,6 +80,12 @@ const { phoneTypesType } = require('./PhoneTypes/types'),
     getPhoneTypeResolver,
   } = require('./PhoneTypes/resolvers');
 
+const { priceDurationsType } = require('./PriceDurations/types'),
+  {
+    priceDurationsResolver,
+    getPriceDurationResolver,
+  } = require('./PriceDurations/resolvers');
+
 const {
     roleAppModulePermissionsType,
   } = require('./RoleAppModulePermissions/types'),
@@ -336,6 +342,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getPhoneTypeResolver(args.id, info),
+    },
+
+    priceDurations: {
+      type: new GraphQLList(priceDurationsType),
+      resolve: async (source, args, context, info) =>
+        await priceDurationsResolver(info),
+    },
+    getPriceDuration: {
+      type: priceDurationsType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getPriceDurationResolver(args.id, info),
     },
 
     roleAppModulePermissions: {
