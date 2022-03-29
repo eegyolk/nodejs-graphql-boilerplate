@@ -6,7 +6,7 @@ const {
 } = require('graphql');
 
 const amenitiesType = new GraphQLObjectType({
-  name: 'AmenitiesType',
+  name: 'Amenities',
   fields: {
     id: { type: new GraphQLNonNull(GraphQLInt) },
     code: { type: new GraphQLNonNull(GraphQLString) },

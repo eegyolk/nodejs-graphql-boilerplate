@@ -39,6 +39,12 @@ const { emailTypesType } = require('./EmailTypes/types'),
 const { featuresType } = require('./Features/types'),
   { featuresResolver, getFeatureResolver } = require('./Features/resolvers');
 
+const { houseRulesType } = require('./HouseRules/types'),
+  {
+    houseRulesResolver,
+    getHouseRuleResolver,
+  } = require('./HouseRules/resolvers');
+
 const { identificationTypesType } = require('./IdentificationTypes/types'),
   {
     identificationTypesResolver,
@@ -220,6 +226,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getFeatureResolver(args.id, info),
+    },
+
+    houseRules: {
+      type: new GraphQLList(houseRulesType),
+      resolve: async (source, args, context, info) =>
+        await houseRulesResolver(info),
+    },
+    getHouseRule: {
+      type: houseRulesType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getHouseRuleResolver(args.id, info),
     },
 
     identificationTypes: {

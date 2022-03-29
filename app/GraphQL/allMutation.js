@@ -31,6 +31,10 @@ const { createFeatureInputType } = require('./Features/inputTypes'),
   { createFeatureResolver } = require('./Features/resolvers'),
   { featuresType } = require('./Features/types');
 
+const { createHouseRuleInputType } = require('./HouseRules/inputTypes'),
+  { createHouseRuleResolver } = require('./HouseRules/resolvers'),
+  { houseRulesType } = require('./HouseRules/types');
+
 const {
     createIdentificationTypeInputType,
   } = require('./IdentificationTypes/inputTypes'),
@@ -172,6 +176,14 @@ const mutations = new GraphQLObjectType({
         input: { type: createFeatureInputType },
       },
       resolve: async (source, args) => await createFeatureResolver(args),
+    },
+
+    createHouseRule: {
+      type: houseRulesType,
+      args: {
+        input: { type: createHouseRuleInputType },
+      },
+      resolve: async (source, args) => await createHouseRuleResolver(args),
     },
 
     createIdentificationType: {
