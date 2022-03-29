@@ -1,4 +1,5 @@
-const { GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLList } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { devicesType } = require('./types'),
   { devicesResolver, getDeviceResolver } = require('./resolvers');
@@ -11,7 +12,7 @@ const devices = {
 const getDevice = {
   type: devicesType,
   args: {
-    id: { type: GraphQLInt },
+    id: { type: BigInt },
   },
   resolve: async (source, args, context, info) =>
     await getDeviceResolver(args.id, info),

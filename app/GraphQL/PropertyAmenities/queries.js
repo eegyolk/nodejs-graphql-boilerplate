@@ -1,4 +1,5 @@
-const { GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLList } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { propertyAmenitiesType } = require('./types'),
   {
@@ -15,7 +16,7 @@ const propertyAmenities = {
 const getPropertyAmenity = {
   type: propertyAmenitiesType,
   args: {
-    id: { type: GraphQLInt },
+    id: { type: BigInt },
   },
   resolve: async (source, args, context, info) =>
     await getPropertyAmenityResolver(args.id, info),

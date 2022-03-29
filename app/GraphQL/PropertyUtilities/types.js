@@ -5,12 +5,13 @@ const {
   GraphQLFloat,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const propertyUtilitiesType = new GraphQLObjectType({
   name: 'PropertyUtilities',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     utility_id: { type: new GraphQLNonNull(GraphQLInt) },
     fee: { type: new GraphQLNonNull(GraphQLFloat) },
     created_at: { type: new GraphQLNonNull(GraphQLString) },

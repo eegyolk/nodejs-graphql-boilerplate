@@ -5,11 +5,12 @@ const {
   GraphQLFloat,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const createPropertyAddressInputType = new GraphQLInputObjectType({
   name: 'CreatePropertyAddressInput',
   fields: {
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     latitude: { type: new GraphQLNonNull(GraphQLFloat) },
     longitude: { type: new GraphQLNonNull(GraphQLFloat) },
     address_line_1: { type: new GraphQLNonNull(GraphQLString) },

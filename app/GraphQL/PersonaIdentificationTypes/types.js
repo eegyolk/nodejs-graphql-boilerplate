@@ -6,6 +6,7 @@ const {
   GraphQLInt,
   GraphQLBoolean,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { identificationTypesType } = require('../IdentificationTypes/types');
 const personansExcludedFields = require('../Personas/excludedFields');
@@ -14,7 +15,7 @@ const { personasType } = require('../Personas/types');
 const personaIdentificationTypesType = new GraphQLObjectType({
   name: 'PersonaIdentificationTypes',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
     persona_id: { type: new GraphQLNonNull(GraphQLInt) },
     persona: {
       type: new GraphQLNonNull(personasType),

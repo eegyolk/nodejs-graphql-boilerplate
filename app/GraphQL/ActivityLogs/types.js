@@ -5,6 +5,7 @@ const {
   GraphQLString,
   GraphQLInt,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const devicesExcludedFields = require('../Devices/excludedFields');
 const { devicesType } = require('../Devices/types');
@@ -32,7 +33,7 @@ const activityLogsType = new GraphQLObjectType({
         return loaders.users.load(`${source.user_id}@${fields.join(',')}`);
       },
     },
-    device_id: { type: new GraphQLNonNull(GraphQLInt) },
+    device_id: { type: new GraphQLNonNull(BigInt) },
     device: {
       type: new GraphQLNonNull(devicesType),
       resolve: (source, args, { loaders }, info) => {

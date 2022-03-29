@@ -1,4 +1,5 @@
-const { GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLList } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { userRolesType } = require('./types'),
   { userRolesResolver, getUserRoleResolver } = require('./resolvers');
@@ -11,7 +12,7 @@ const userRoles = {
 const getUserRole = {
   type: userRolesType,
   args: {
-    id: { type: GraphQLInt },
+    id: { type: BigInt },
   },
   resolve: async (source, args, context, info) =>
     await getUserRoleResolver(args.id, info),

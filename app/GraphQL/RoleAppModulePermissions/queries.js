@@ -1,4 +1,5 @@
-const { GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLList } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { roleAppModulePermissionsType } = require('./types'),
   {
@@ -15,7 +16,7 @@ const roleAppModulePermissions = {
 const getRoleAppModulePermission = {
   type: roleAppModulePermissionsType,
   args: {
-    id: { type: GraphQLInt },
+    id: { type: BigInt },
   },
   resolve: async (source, args, context, info) =>
     await getRoleAppModulePermissionResolver(args.id, info),

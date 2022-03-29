@@ -1,14 +1,14 @@
 const {
   GraphQLInputObjectType,
   GraphQLNonNull,
-  GraphQLInt,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const createPropertyMediaFileInputType = new GraphQLInputObjectType({
   name: 'CreatePropertyMediaFileInput',
   fields: {
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     images_url: { type: new GraphQLNonNull(GraphQLString) },
     videos_url: { type: new GraphQLNonNull(GraphQLString) },
   },

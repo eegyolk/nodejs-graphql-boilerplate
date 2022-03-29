@@ -4,12 +4,13 @@ const {
   GraphQLInt,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const propertyFeaturesType = new GraphQLObjectType({
   name: 'PropertyFeatures',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     feature_id: { type: new GraphQLNonNull(GraphQLInt) },
     value: { type: new GraphQLNonNull(GraphQLInt) },
     created_at: { type: new GraphQLNonNull(GraphQLString) },

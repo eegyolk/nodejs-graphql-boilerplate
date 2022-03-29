@@ -1,4 +1,5 @@
-const { GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLList } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { subscriptionsType } = require('./types'),
   { subscriptionsResolver, getSubscriptionResolver } = require('./resolvers');
@@ -12,7 +13,7 @@ const subscriptions = {
 const getSubscription = {
   type: subscriptionsType,
   args: {
-    id: { type: GraphQLInt },
+    id: { type: BigInt },
   },
   resolve: async (source, args, context, info) =>
     await getSubscriptionResolver(args.id, info),

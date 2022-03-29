@@ -4,11 +4,12 @@ const {
   GraphQLInt,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const priceSchemeDurationLogsType = new GraphQLObjectType({
   name: 'PriceSchemeDurationLogs',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
     price_scheme_duration_id: { type: new GraphQLNonNull(GraphQLInt) },
     old_data: { type: new GraphQLNonNull(GraphQLString) },
     new_data: { type: new GraphQLNonNull(GraphQLString) },

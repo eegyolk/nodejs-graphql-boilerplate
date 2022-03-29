@@ -6,6 +6,7 @@ const {
   GraphQLInt,
   GraphQLBoolean,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { appModulesType } = require('../AppModules/types');
 const { rolesType } = require('../Roles/types');
@@ -13,7 +14,7 @@ const { rolesType } = require('../Roles/types');
 const roleAppModulePermissionsType = new GraphQLObjectType({
   name: 'RoleAppModulePermissions',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
     role_id: { type: new GraphQLNonNull(GraphQLInt) },
     role: {
       type: new GraphQLNonNull(rolesType),

@@ -1,16 +1,16 @@
 const {
   GraphQLObjectType,
   GraphQLNonNull,
-  GraphQLInt,
   GraphQLFloat,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const propertyAddressesType = new GraphQLObjectType({
   name: 'PropertyAddresses',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     latitude: { type: new GraphQLNonNull(GraphQLFloat) },
     longitude: { type: new GraphQLNonNull(GraphQLFloat) },
     address_line_1: { type: new GraphQLNonNull(GraphQLString) },

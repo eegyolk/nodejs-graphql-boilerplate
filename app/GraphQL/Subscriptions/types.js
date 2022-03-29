@@ -5,13 +5,14 @@ const {
   GraphQLFloat,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { paymentStatusEnumType } = require('./enumTypes');
 
 const subscriptionsType = new GraphQLObjectType({
   name: 'Subscriptions',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     price_scheme_duration_id: { type: new GraphQLNonNull(GraphQLInt) },
     price_scheme_duration_amount: { type: new GraphQLNonNull(GraphQLFloat) },

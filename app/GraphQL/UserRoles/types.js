@@ -5,6 +5,7 @@ const {
   GraphQLString,
   GraphQLInt,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { rolesType } = require('../Roles/types');
 const usersExcludedFields = require('../Users/excludedFields');
@@ -13,7 +14,7 @@ const { usersType } = require('../Users/types');
 const userRolesType = new GraphQLObjectType({
   name: 'UserRoles',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     user: {
       type: new GraphQLNonNull(usersType),

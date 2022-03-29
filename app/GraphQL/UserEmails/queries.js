@@ -1,4 +1,5 @@
-const { GraphQLList, GraphQLInt } = require('graphql');
+const { GraphQLList } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { userEmailsType } = require('./types'),
   { userEmailsResolver, getUserEmailResolver } = require('./resolvers');
@@ -12,7 +13,7 @@ const userEmails = {
 const getUserEmail = {
   type: userEmailsType,
   args: {
-    id: { type: GraphQLInt },
+    id: { type: BigInt },
   },
   resolve: async (source, args, context, info) =>
     await getUserEmailResolver(args.id, info),

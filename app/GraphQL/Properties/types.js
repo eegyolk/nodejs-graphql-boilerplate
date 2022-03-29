@@ -5,13 +5,14 @@ const {
   GraphQLString,
   GraphQLFloat,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const { verificationStatusEnumType } = require('./enumTypes');
 
 const propertiesType = new GraphQLObjectType({
   name: 'Properties',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     unit_type_id: { type: new GraphQLNonNull(GraphQLInt) },
     property_type_id: { type: new GraphQLNonNull(GraphQLInt) },

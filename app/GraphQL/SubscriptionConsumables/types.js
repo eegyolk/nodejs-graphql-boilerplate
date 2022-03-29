@@ -4,12 +4,13 @@ const {
   GraphQLInt,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const subscriptionConsumablesType = new GraphQLObjectType({
   name: 'SubscriptionConsumables',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
-    subscription_id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
+    subscription_id: { type: new GraphQLNonNull(BigInt) },
     price_scheme_feature_name: { type: new GraphQLNonNull(GraphQLString) },
     price_scheme_feature_value: { type: new GraphQLNonNull(GraphQLInt) },
     available_count: { type: new GraphQLNonNull(GraphQLInt) },

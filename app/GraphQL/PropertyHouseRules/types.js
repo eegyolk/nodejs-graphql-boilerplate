@@ -4,12 +4,13 @@ const {
   GraphQLInt,
   GraphQLString,
 } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const propertyHouseRulesType = new GraphQLObjectType({
   name: 'PropertyHouseRules',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     house_rule_id: { type: new GraphQLNonNull(GraphQLInt) },
     created_at: { type: new GraphQLNonNull(GraphQLString) },
     updated_at: { type: new GraphQLNonNull(GraphQLString) },

@@ -1,15 +1,11 @@
-const {
-  GraphQLObjectType,
-  GraphQLNonNull,
-  GraphQLInt,
-  GraphQLString,
-} = require('graphql');
+const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
+const BigInt = require('graphql-bigint');
 
 const propertyMediaFilesType = new GraphQLObjectType({
   name: 'PropertyMediaFiles',
   fields: {
-    id: { type: new GraphQLNonNull(GraphQLInt) },
-    property_id: { type: new GraphQLNonNull(GraphQLInt) },
+    id: { type: new GraphQLNonNull(BigInt) },
+    property_id: { type: new GraphQLNonNull(BigInt) },
     images_url: { type: new GraphQLNonNull(GraphQLString) },
     videos_url: { type: new GraphQLNonNull(GraphQLString) },
     created_at: { type: new GraphQLNonNull(GraphQLString) },
