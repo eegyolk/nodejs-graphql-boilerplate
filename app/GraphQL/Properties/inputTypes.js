@@ -8,8 +8,8 @@ const {
 
 const { verificationStatusEnumType } = require('./enumTypes');
 
-const createPriceSchemeFeatureInputType = new GraphQLInputObjectType({
-  name: 'CreatePriceSchemeFeatureInput',
+const createPropertyInputType = new GraphQLInputObjectType({
+  name: 'CreatePropertyInput',
   fields: {
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     unit_type_id: { type: new GraphQLNonNull(GraphQLInt) },
@@ -24,4 +24,4 @@ const createPriceSchemeFeatureInputType = new GraphQLInputObjectType({
   },
 });
 
-module.exports = { createPriceSchemeFeatureInputType };
+module.exports = { createPropertyInputType };
