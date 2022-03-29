@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const PaymentProvidersRepository = require('../../Repositories/PaymentProvidersRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getPaymentProvidersLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getPaymentProvidersLoader,
+  paymentProviders: new DataLoader(getPaymentProvidersLoader),
 };

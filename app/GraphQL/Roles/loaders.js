@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const RolesRepository = require('../../Repositories/RolesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getRolesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getRolesLoader,
+  roles: new DataLoader(getRolesLoader),
 };

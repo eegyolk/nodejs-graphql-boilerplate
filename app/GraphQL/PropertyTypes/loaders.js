@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const PropertyTypesRepository = require('../../Repositories/PropertyTypesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getPropertyTypesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getPropertyTypesLoader,
+  propertyTypes: new DataLoader(getPropertyTypesLoader),
 };

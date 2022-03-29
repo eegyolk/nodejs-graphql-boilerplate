@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const AppModulesRepository = require('../../Repositories/AppModulesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getAppModulesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getAppModulesLoader,
+  appModules: new DataLoader(getAppModulesLoader),
 };

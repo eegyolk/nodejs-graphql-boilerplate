@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const PriceSchemesRepository = require('../../Repositories/PriceSchemesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getPriceSchemesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getPriceSchemesLoader,
+  priceSchemes: new DataLoader(getPriceSchemesLoader),
 };

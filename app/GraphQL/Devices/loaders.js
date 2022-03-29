@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const DevicesRepository = require('../../Repositories/DevicesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getDevicesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getDevicesLoader,
+  devices: new DataLoader(getDevicesLoader),
 };

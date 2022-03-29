@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const LeaseDurationsRepository = require('../../Repositories/LeaseDurationsRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getLeaseDurationsLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getLeaseDurationsLoader,
+  leaseDurations: new DataLoader(getLeaseDurationsLoader),
 };

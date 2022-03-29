@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const HouseRulesRepository = require('../../Repositories/HouseRulesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getHouseRulesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getHouseRulesLoader,
+  houseRules: new DataLoader(getHouseRulesLoader),
 };

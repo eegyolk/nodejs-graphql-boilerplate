@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const FeaturesRepository = require('../../Repositories/FeaturesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getFeaturesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getFeaturesLoader,
+  features: new DataLoader(getFeaturesLoader),
 };

@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const UsersRepository = require('../../Repositories/UsersRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getUsersLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getUsersLoader,
+  users: new DataLoader(getUsersLoader),
 };

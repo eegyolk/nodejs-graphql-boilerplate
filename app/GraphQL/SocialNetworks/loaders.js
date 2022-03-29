@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const SocialNetworksRepository = require('../../Repositories/SocialNetworksRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getSocialNetworksLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getSocialNetworksLoader,
+  socialNetworks: new DataLoader(getSocialNetworksLoader),
 };

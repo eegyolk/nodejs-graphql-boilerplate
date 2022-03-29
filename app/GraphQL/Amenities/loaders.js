@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const AmenitiesRepository = require('../../Repositories/AmenitiesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getAmenitiesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getAmenitiesLoader,
+  amenities: new DataLoader(getAmenitiesLoader),
 };

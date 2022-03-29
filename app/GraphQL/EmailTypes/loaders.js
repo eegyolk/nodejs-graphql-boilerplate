@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const EmailTypesRepository = require('../../Repositories/EmailTypesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getEmailTypesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getEmailTypesLoader,
+  emailTypes: new DataLoader(getEmailTypesLoader),
 };

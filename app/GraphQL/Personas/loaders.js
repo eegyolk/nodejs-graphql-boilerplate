@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const PersonasRepository = require('../../Repositories/PersonasRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getPersonasLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getPersonasLoader,
+  personas: new DataLoader(getPersonasLoader),
 };

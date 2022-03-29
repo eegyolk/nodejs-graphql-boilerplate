@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const AddressTypesRepository = require('../../Repositories/AddressTypesRepository');
 
 const getAddressTypesLoader = async (ids) => {
@@ -5,5 +7,5 @@ const getAddressTypesLoader = async (ids) => {
 };
 
 module.exports = {
-  getAddressTypesLoader,
+  addressTypes: new DataLoader(getAddressTypesLoader),
 };

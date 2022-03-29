@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const IdentificationTypesRepository = require('../../Repositories/IdentificationTypesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -11,5 +13,5 @@ const getIdentificationTypesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getIdentificationTypesLoader,
+  identificationTypes: new DataLoader(getIdentificationTypesLoader),
 };

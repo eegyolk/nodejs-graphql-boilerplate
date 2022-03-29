@@ -1,3 +1,5 @@
+const DataLoader = require('dataloader');
+
 const PhoneTypesRepository = require('../../Repositories/PhoneTypesRepository');
 const Utilities = require('../../Classes/Utilities');
 
@@ -8,5 +10,5 @@ const getPhoneTypesLoader = async (idsAndFields) => {
 };
 
 module.exports = {
-  getPhoneTypesLoader,
+  phoneTypes: new DataLoader(getPhoneTypesLoader),
 };
