@@ -4,6 +4,7 @@ const {
   GraphQLInt,
   GraphQLString,
 } = require('graphql');
+const { getAmenity } = require('../Repositories/AmenitiesRepository');
 
 const { activityLogsType } = require('./ActivityLogs/types'),
   {
@@ -16,6 +17,9 @@ const { addressTypesType } = require('./AddressTypes/types'),
     addressTypesResolver,
     getAddressTypeResolver,
   } = require('./AddressTypes/resolvers');
+
+const { amenitiesType } = require('./Amenities/types'),
+  { amenitiesResolver, getAmenityResolver } = require('./Amenities/resolvers');
 
 const { appModulesType } = require('./AppModules/types'),
   {
@@ -143,6 +147,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getAddressTypeResolver(args.id, info),
+    },
+
+    amenities: {
+      type: new GraphQLList(amenitiesType),
+      resolve: async (source, args, context, info) =>
+        await amenitiesResolver(info),
+    },
+    getAmenity: {
+      type: amenitiesType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getAmenityResolver(args.id, info),
     },
 
     appModules: {
