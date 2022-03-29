@@ -115,6 +115,9 @@ const { socialNetworksType } = require('./SocialNetworks/types'),
     getSocialNetworkResolver,
   } = require('./SocialNetworks/resolvers');
 
+const { unitTypesType } = require('./UnitTypes/types'),
+  { unitTypesResolver, getUnitTypeResolver } = require('./UnitTypes/resolvers');
+
 const { userAddressesType } = require('./UserAddresses/types'),
   {
     userAddressesResolver,
@@ -437,6 +440,20 @@ const queries = new GraphQLObjectType({
       },
       resolve: async (source, args, context, info) =>
         await getSocialNetworkResolver(args.id, info),
+    },
+
+    unitTypes: {
+      type: new GraphQLList(unitTypesType),
+      resolve: async (source, args, context, info) =>
+        await unitTypesResolver(info),
+    },
+    getUnitType: {
+      type: unitTypesType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: async (source, args, context, info) =>
+        await getUnitTypeResolver(args.id, info),
     },
 
     userAddresses: {

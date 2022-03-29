@@ -19,6 +19,7 @@ const { getPriceSchemesLoader } = require('./PriceSchemes/loaders');
 const { getPropertyTypesLoader } = require('./PropertyTypes/loaders');
 const { getRolesLoader } = require('./Roles/loaders');
 const { getSocialNetworksLoader } = require('./SocialNetworks/loaders');
+const { getUnitTypesLoader } = require('./UnitTypes/loaders');
 const { getUsersLoader } = require('./Users/loaders');
 
 const loaders = {
@@ -39,6 +40,7 @@ const loaders = {
   propertyTypes: new DataLoader(getPropertyTypesLoader),
   roles: new DataLoader(getRolesLoader),
   socialNetworks: new DataLoader(getSocialNetworksLoader),
+  unitTypes: new DataLoader(getUnitTypesLoader),
   users: new DataLoader(getUsersLoader),
 };
 
