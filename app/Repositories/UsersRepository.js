@@ -16,26 +16,14 @@ class UsersRepository {
   }
 
   static async createUser(input) {
-    const {
-      name,
-      email_address,
-      username,
-      password,
-      image_url,
-      remember_token,
-      verification_token,
-      recovery_token,
-    } = input;
+    const { username, email_address, password, firstname, lastname } = input;
 
     return await Users.query().insert({
-      name,
-      email_address,
       username,
+      email_address,
       password,
-      image_url,
-      remember_token,
-      verification_token,
-      recovery_token,
+      firstname,
+      lastname,
     });
   }
 }
