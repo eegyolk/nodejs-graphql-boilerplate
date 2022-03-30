@@ -1,7 +1,7 @@
 const { GraphQLEnumType } = require('graphql');
 
 const paymentStatusEnumType = new GraphQLEnumType({
-  name: 'PaymentStatussEnum',
+  name: 'PaymentStatusEnum',
   values: {
     PENDING: { value: 'PENDING' },
     COMPLETED: { value: 'COMPLETED' },
