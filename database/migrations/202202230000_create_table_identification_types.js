@@ -14,10 +14,16 @@ exports.up = function (knex) {
     table.string('label', 100).notNullable();
     table.string('description', 250).defaultTo('');
     table.boolean('is_default').defaultTo(false);
-    table.tinyint('required_images_count', 1).defaultTo(1);
+    table
+      .tinyint('required_images_count', 1)
+      .defaultTo(1)
+      .comment('This is the no. of required images a user should provide');
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
+    table.comment(
+      'An identification type can be assigned to many users in table user_identifications'
+    );
 
     if (client === 'mysql') {
       table.engine('InnoDB');

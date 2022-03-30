@@ -17,6 +17,7 @@ exports.up = function (knex) {
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
+    table.comment('A role can be assigned to many users in table user_roles');
 
     if (client === 'mysql') {
       table.engine('InnoDB');

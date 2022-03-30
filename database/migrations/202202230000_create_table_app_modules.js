@@ -17,6 +17,9 @@ exports.up = function (knex) {
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
+    table.comment(
+      'An app modules can be assigned to many roles in table role_app_module_permissions'
+    );
 
     if (client === 'mysql') {
       table.engine('InnoDB');

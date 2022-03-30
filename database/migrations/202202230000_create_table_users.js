@@ -25,12 +25,42 @@ exports.up = function (knex) {
     table.tinyint('age', 3).defaultTo(0);
     table.enum('sex', ['', 'MALE', 'FEMALE']).defaultTo('');
     table.string('photo_url', 1000).defaultTo('');
-    table.string('verification_token', 100).defaultTo('');
-    table.string('verification_md5', 32).index().defaultTo('');
-    table.timestamp('verified_at').nullable();
-    table.string('remember_token', 100).defaultTo('');
-    table.string('recovery_token', 100).defaultTo('');
-    table.string('recovery_md5', 32).index().defaultTo('');
+    table
+      .string('verification_token', 100)
+      .defaultTo('')
+      .comment(
+        'Value will be in JWT format, this will be generated during registration w/c will be used for email verification'
+      );
+    table
+      .string('verification_md5', 32)
+      .index()
+      .defaultTo('')
+      .comment(
+        'This will be used for faster query than verification_token for validation'
+      );
+    table
+      .timestamp('verified_at')
+      .nullable()
+      .comment('Should have value once email is verified');
+    table
+      .string('remember_token', 100)
+      .defaultTo('')
+      .comment(
+        'Value will be in JWT format, user needs to tick remember me checkbox'
+      );
+    table
+      .string('recovery_token', 100)
+      .defaultTo('')
+      .comment(
+        'Value will be in JWT format, this will be generated during forgot password'
+      );
+    table
+      .string('recovery_md5', 32)
+      .index()
+      .defaultTo('')
+      .comment(
+        'This will be used for faster query than recovery_token for validation'
+      );
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();

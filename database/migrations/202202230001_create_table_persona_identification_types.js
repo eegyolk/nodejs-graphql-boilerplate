@@ -15,6 +15,7 @@ exports.up = function (knex) {
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
       table.timestamp('deleted_at').nullable();
+      table.comment('List of identification_type per persona');
 
       table
         .foreign('persona_id', 'idx_persona_identification_types_persona_id')

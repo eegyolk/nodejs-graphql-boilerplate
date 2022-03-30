@@ -17,6 +17,9 @@ exports.up = function (knex) {
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
+    table.comment(
+      'Default structure is that a persona can be assigned to many users using tabe user_personas, but it may change depending on the project requirements'
+    );
 
     if (client === 'mysql') {
       table.engine('InnoDB');

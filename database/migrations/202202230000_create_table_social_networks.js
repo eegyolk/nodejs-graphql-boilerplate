@@ -17,6 +17,9 @@ exports.up = function (knex) {
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
+    table.comment(
+      'A social network can be assigned to many users in tabe user_social_networks'
+    );
 
     if (client === 'mysql') {
       table.engine('InnoDB');

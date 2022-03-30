@@ -8,12 +8,21 @@ exports.up = function (knex) {
   return knex.schema.createTable('devices', function (table) {
     table.bigIncrements('id').primary();
     table.integer('user_id').unsigned().notNullable();
-    table.string('ip_address', 25).notNullable();
+    table
+      .string('ip_address', 25)
+      .notNullable()
+      .comment('Can store ipv4 or ipv6');
     table.text('user_agent').notNullable();
-    table.string('user_agent_md5', 32).notNullable();
+    table
+      .string('user_agent_md5', 32)
+      .notNullable()
+      .comment(
+        'This will be used for faster query than user_agent for validation'
+      );
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     table.timestamp('deleted_at').nullable();
+    table.comment('The device used by a user during the authentication');
 
     table
       .foreign('user_id', 'idx_devices_user_id')
