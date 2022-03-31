@@ -12,6 +12,11 @@ exports.seed = async function (knex) {
       description: '',
     },
     {
+      code: 'COOKING_ALLOWED',
+      label: 'Cooking Allowed',
+      description: '',
+    },
+    {
       code: 'VISITORS_ALLOWED',
       label: 'Visitors Allowed',
       description: '',
