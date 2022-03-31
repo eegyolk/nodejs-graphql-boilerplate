@@ -7,21 +7,15 @@ exports.seed = async function (knex) {
   await knex('email_types').del();
   await knex('email_types').insert([
     {
-      code: 'HOME',
-      label: 'Home',
-      description: 'Home email',
+      code: 'PERSONAL',
+      label: 'Personal',
+      description: 'Personal email',
       is_default: true,
     },
     {
       code: 'WORK',
       label: 'Work',
       description: 'Work email',
-      is_default: false,
-    },
-    {
-      code: 'TEMP',
-      label: 'Temp',
-      description: 'Temp email',
       is_default: false,
     },
   ]);
