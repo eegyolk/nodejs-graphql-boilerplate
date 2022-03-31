@@ -19,12 +19,6 @@ exports.seed = async function (knex) {
       is_default: false,
     },
     {
-      code: 'TEMP',
-      label: 'Temp',
-      description: 'Temp address',
-      is_default: false,
-    },
-    {
       code: 'BILLING',
       label: 'Billing',
       description: 'Billing address',
