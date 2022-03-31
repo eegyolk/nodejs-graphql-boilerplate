@@ -24,5 +24,11 @@ exports.seed = async function (knex) {
       description: 'Twitter url',
       is_default: false,
     },
+    {
+      code: 'LINKEDIN',
+      label: 'LinkedIn',
+      description: 'LinkedIn url',
+      is_default: false,
+    },
   ]);
 };
