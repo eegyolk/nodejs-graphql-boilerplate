@@ -2,7 +2,7 @@ const { raw } = require('objection');
 
 const FeaturesAminities = require('../Models/FeaturesAminities');
 
-class FeatureAmenityTypesRepository {
+class FeaturesAminitiesRepository {
   static async featuresAminities(fields) {
     return await FeaturesAminities.query().select(raw(fields));
   }
@@ -29,4 +29,4 @@ class FeatureAmenityTypesRepository {
   }
 }
 
-module.exports = FeatureAmenityTypesRepository;
+module.exports = FeaturesAminitiesRepository;
