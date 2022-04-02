@@ -14,6 +14,7 @@ const createPropertyInputType = new GraphQLInputObjectType({
     user_id: { type: new GraphQLNonNull(GraphQLInt) },
     unit_type_id: { type: new GraphQLNonNull(GraphQLInt) },
     property_type_id: { type: new GraphQLNonNull(GraphQLInt) },
+    accommodation_type_id: { type: new GraphQLNonNull(GraphQLInt) },
     title: { type: new GraphQLNonNull(GraphQLString) },
     description: { type: new GraphQLNonNull(GraphQLString) },
     lot_area: { type: new GraphQLNonNull(GraphQLFloat) },
