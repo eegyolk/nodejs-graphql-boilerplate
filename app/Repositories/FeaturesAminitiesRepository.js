@@ -18,9 +18,11 @@ class FeaturesAminitiesRepository {
   }
 
   static async createFeatureAminity(input) {
-    const { code, label, description, with_value } = input;
+    const { feature_amenity_type_id, code, label, description, with_value } =
+      input;
 
     return await FeaturesAminities.query().insert({
+      feature_amenity_type_id,
       code,
       label,
       description,
