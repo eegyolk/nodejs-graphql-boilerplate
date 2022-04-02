@@ -10,6 +10,7 @@ exports.up = function (knex) {
     table.integer('user_id').unsigned().notNullable();
     table.integer('unit_type_id').unsigned().notNullable();
     table.integer('property_type_id').unsigned().notNullable();
+    table.integer('accommodation_type_id').unsigned().notNullable();
     table.string('title', 100).notNullable();
     table.string('description', 250).defaultTo('');
     table.decimal('lot_area', 5, 2).defaultTo(0.0);
@@ -33,6 +34,10 @@ exports.up = function (knex) {
       .foreign('property_type_id', 'idx_properties_property_type_id')
       .references('id')
       .inTable('property_types');
+    table
+      .foreign('accommodation_type_id', 'idx_properties_accommodation_type_id')
+      .references('id')
+      .inTable('accommodation_types');
 
     if (client === 'mysql') {
       table.engine('InnoDB');
