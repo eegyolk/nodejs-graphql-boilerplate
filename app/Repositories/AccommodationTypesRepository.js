@@ -17,7 +17,7 @@ class AccommodationTypesRepository {
       .whereIn('id', ids);
   }
 
-  static async creatAccommodationType(input) {
+  static async createAccommodationType(input) {
     const { code, label, description } = input;
 
     return await AccommodationTypes.query().insert({
