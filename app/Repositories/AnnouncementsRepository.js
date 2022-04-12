@@ -12,11 +12,10 @@ class AnnouncementsRepository {
   }
 
   static async createAnnouncement(input) {
-    const { code, label, description } = input;
+    const { title, description } = input;
 
     return await Announcements.query().insert({
-      code,
-      label,
+      title,
       description,
     });
   }
